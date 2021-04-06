@@ -9,6 +9,7 @@ const workoutNameInput = document.getElementById('workout_name_input');
 const workoutExerciseContainer = document.getElementById('workout_exercise_container');
 const workoutListContainer = document.getElementById('workout_list_container');
 const workoutListDiv = document.getElementById('workout_list_div');
+const workoutList = document.getElementById('workout');
 
 // console.log(addWorkoutButton); // checked
 
@@ -29,64 +30,48 @@ function saveWorkoutName() {
     // create elements to append to the DOM
     const workoutNameDiv = document.createElement('div');
     const workoutNameP = document.createElement('p');
-    workoutNameP.innerText = workoutNameInput.value;
+    workoutNameP.innerText = `Workout Name: ${workoutNameInput.value}`;
 
     // create form for exercise 
     const exerciseForm = document.createElement('form');
     // console.log(exerciseForm); tested and checked 
 
-    // *** create label and input tags for exercise name ***
-    const exerciseNameLabel = document.createElement('label');
-    // console.log(exerciseNameLabel); tested and checked
-    exerciseNameLabel.innerText = 'Exercise Name: ';
+    // *** create input tags for exercise name ***
     // console.log(exerciseNameLabel.innerText); tested and checked
     const exerciseNameInput = document.createElement('input');
     // console.log(exerciseNameInput); //tested and checked
     exerciseNameInput.setAttribute('type', 'text');
+    exerciseNameInput.setAttribute('placeholder', 'name')
 
-    // *** create label and input tags for exercise sets ***
-    const exerciseSetLabel = document.createElement('label');
-    exerciseSetLabel.innerText = 'Sets: ';
+    // *** create input tags for exercise sets ***
     const exerciseSetInput = document.createElement('input');
     exerciseSetInput.setAttribute('type', 'text');
+    exerciseSetInput.setAttribute('placeholder', 'sets');
 
-    // *** create label and input tags for exercise repetitions ***
-    const exerciseRepetitionLabel = document.createElement('label');
-    exerciseRepetitionLabel.innerText = 'Repetitions: ';
+    // *** create input tags for exercise repetitions ***
     const exerciseRepetitionInput = document.createElement('input');
     exerciseRepetitionInput.setAttribute('type', 'text');
+    exerciseRepetitionInput.setAttribute('placeholder', 'reps');
 
-    // *** create label and input tags for exercise time ***
-    const exerciseTimeLabel = document.createElement('label');
-    exerciseTimeLabel.innerText = 'Time: ';
+    // *** create input tags for exercise time ***
     const exerciseTimeInput = document.createElement('input');
     exerciseTimeInput.setAttribute('type', 'text');
-
-    // *** create label and input tags for exercise completed ***
-    const exerciseCompletedLabel = document.createElement('label');
-    exerciseCompletedLabel.innerText = 'Exercise Completed? ';
-    const exerciseCompletedInput = document.createElement('input');
-    exerciseCompletedInput.setAttribute('type', 'checkbox');
+    exerciseTimeInput.setAttribute('placeholder', 'time completed');
 
     // *** create submit input button to submit the exercise ***
     const exerciseSubmitted = document.createElement('input');
     exerciseSubmitted.setAttribute('type', 'submit');
     exerciseSubmitted.setAttribute('value', 'Save Exercise');
 
-    // Append the form, labels and input tags to the DOM
-    exerciseCompletedLabel.appendChild(exerciseCompletedInput);
-    exerciseTimeLabel.appendChild(exerciseTimeInput);
-    exerciseRepetitionLabel.appendChild(exerciseRepetitionInput);
-    exerciseSetLabel.appendChild(exerciseSetInput);
     // console.log(exerciseSetLabel, exerciseRepetitionLabel, exerciseTimeLabel, exerciseCompletedLabel);
-    exerciseNameLabel.appendChild(exerciseNameInput);
-    exerciseForm.appendChild(exerciseNameLabel);
-    exerciseForm.appendChild(exerciseSetLabel);
-    exerciseForm.appendChild(exerciseSetLabel);
-    exerciseForm.appendChild(exerciseRepetitionLabel);
-    exerciseForm.appendChild(exerciseTimeLabel);
-    exerciseForm.appendChild(exerciseCompletedLabel);
-    exerciseForm.appendChild(exerciseSubmitted);   
+    exerciseForm.appendChild(exerciseNameInput);
+    exerciseForm.appendChild(exerciseSetInput);
+    exerciseForm.appendChild(exerciseRepetitionInput);
+    exerciseForm.appendChild(exerciseTimeInput);
+    exerciseForm.appendChild(exerciseSubmitted);  
+    // console.log(exerciseForm);
+    
+    exerciseForm.addEventListener('submit', saveExerciseInfo)
 
     // append workout name to the DOM
     workoutNameDiv.append(workoutNameP, exerciseForm);
@@ -98,5 +83,21 @@ function saveWorkoutName() {
     workoutFormContainer.hidden = true;
 
     workoutForm.reset(); // resets the form after submission
+
+}
+
+// add a function to save the exercise values and append them to the DOM
+function saveExerciseInfo(e) {
+    e.preventDefault();
+    const nameInput = e.target.children[0].value
+    // console.log(nameInput);
+    const setInput = e.target.children[1].value
+    const repInput = e.target.children[2].value
+    const timeInput = e.target.children[3].value
+    
+    
+    // console.log(nameInput, setInput, repInput, timeInput);
+
+
 
 }
