@@ -34,13 +34,19 @@ function saveWorkoutName() {
     // create form for exercise 
     const exerciseForm = document.createElement('form');
     // console.log(exerciseForm); tested and checked 
+
+    // *** create label and input tags for exercise name ***
     const exerciseNameLabel = document.createElement('label');
     // console.log(exerciseNameLabel); tested and checked
-    exerciseNameLabel.innerText = 'Exercise Name:';
+    exerciseNameLabel.innerText = 'Exercise Name: ';
     // console.log(exerciseNameLabel.innerText); tested and checked
     const exerciseNameInput = document.createElement('input');
     // console.log(exerciseNameInput); //tested and checked
     exerciseNameInput.setAttribute("type", "text");
+
+    // *** create label and input tags for exercise sets ***
+    const exerciseSetLabel = document.createElement('label');
+    exerciseSetLabel.innerText = 'Sets: ';
 
     
 
