@@ -5,7 +5,7 @@ const addWorkoutButton = document.getElementById('add_workout_button');
 const workoutFormContainer = document.getElementById('workout_form_container');
 const workoutForm = document.getElementById('workout_form');
 const workoutNameInput = document.getElementById('workout_name_input');
-const exerciseFormContainer = document.getElementById('exercise_form_container');
+// const exerciseFormContainer = document.getElementById('exercise_form_container');
 const workoutExerciseContainer = document.getElementById('workout_exercise_container');
 const workoutListContainer = document.getElementById('workout_list_container');
 const workoutListDiv = document.getElementById('workout_list_div');
@@ -61,14 +61,35 @@ function saveWorkoutName() {
     exerciseTimeLabel.innerText = 'Time: ';
     const exerciseTimeInput = document.createElement('input');
     exerciseTimeInput.setAttribute('type', 'text');
-    
 
+    // *** create label and input tags for exercise completed ***
+    const exerciseCompletedLabel = document.createElement('label');
+    exerciseCompletedLabel.innerText = 'Exercise Completed? ';
+    const exerciseCompletedInput = document.createElement('input');
+    exerciseCompletedInput.setAttribute('type', 'checkbox');
 
+    // *** create submit input button to submit the exercise ***
+    const exerciseSubmitted = document.createElement('input');
+    exerciseSubmitted.setAttribute('type', 'submit');
+    exerciseSubmitted.setAttribute('value', 'Save Exercise');
 
-    
+    // Append the form, labels and input tags to the DOM
+    exerciseCompletedLabel.appendChild(exerciseCompletedInput);
+    exerciseTimeLabel.appendChild(exerciseTimeInput);
+    exerciseRepetitionLabel.appendChild(exerciseRepetitionInput);
+    exerciseSetLabel.appendChild(exerciseSetInput);
+    // console.log(exerciseSetLabel, exerciseRepetitionLabel, exerciseTimeLabel, exerciseCompletedLabel);
+    exerciseNameLabel.appendChild(exerciseNameInput);
+    exerciseForm.appendChild(exerciseNameLabel);
+    exerciseForm.appendChild(exerciseSetLabel);
+    exerciseForm.appendChild(exerciseSetLabel);
+    exerciseForm.appendChild(exerciseRepetitionLabel);
+    exerciseForm.appendChild(exerciseTimeLabel);
+    exerciseForm.appendChild(exerciseCompletedLabel);
+    exerciseForm.appendChild(exerciseSubmitted);   
 
-    // append elements to the DOM
-    workoutNameDiv.appendChild(workoutNameP);
+    // append workout name to the DOM
+    workoutNameDiv.append(workoutNameP, exerciseForm);
     workoutExerciseContainer.appendChild(workoutNameDiv);
 
     
