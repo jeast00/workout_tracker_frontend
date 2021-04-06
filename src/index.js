@@ -5,10 +5,10 @@ const addWorkoutButton = document.getElementById('add_workout_button');
 const workoutFormContainer = document.getElementById('workout_form_container');
 const workoutForm = document.getElementById('workout_form');
 const workoutNameInput = document.getElementById('workout_name_input');
-// const exerciseFormContainer = document.getElementById('exercise_form_container');
+const exerciseFormContainer = document.getElementById('exercise_form_container');
 const workoutExerciseContainer = document.getElementById('workout_exercise_container');
-
-
+const workoutListContainer = document.getElementById('workout_list_container');
+const workoutListDiv = document.getElementById('workout_list_div');
 
 // console.log(addWorkoutButton); // checked
 
@@ -29,12 +29,30 @@ function saveWorkoutName() {
     // create elements to append to the DOM
     const workoutNameDiv = document.createElement('div');
     const workoutNameP = document.createElement('p');
-    const exerciseFormContainer = document.createElement('div');
+    workoutNameP.innerText = workoutNameInput.value;
+
+    // create form for exercise 
     const exerciseForm = document.createElement('form');
+    // console.log(exerciseForm); tested and checked 
+    const exerciseNameLabel = document.createElement('label');
+    // console.log(exerciseNameLabel); tested and checked
+    exerciseNameLabel.innerText = 'Exercise Name:';
+    // console.log(exerciseNameLabel.innerText); tested and checked
+    const exerciseNameInput = document.createElement('input');
+    // console.log(exerciseNameInput); //tested and checked
+    exerciseNameInput.setAttribute("type", "text");
+
+    
+
+    // append elements to the DOM
+    workoutNameDiv.appendChild(workoutNameP);
+    workoutExerciseContainer.appendChild(workoutNameDiv);
+
     
 
     // hide the workout form from the DOM
     workoutFormContainer.hidden = true;
 
     workoutForm.reset(); // resets the form after submission
+
 }
