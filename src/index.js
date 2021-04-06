@@ -42,11 +42,21 @@ function saveWorkoutName() {
     // console.log(exerciseNameLabel.innerText); tested and checked
     const exerciseNameInput = document.createElement('input');
     // console.log(exerciseNameInput); //tested and checked
-    exerciseNameInput.setAttribute("type", "text");
+    exerciseNameInput.setAttribute('type', 'text');
 
     // *** create label and input tags for exercise sets ***
     const exerciseSetLabel = document.createElement('label');
     exerciseSetLabel.innerText = 'Sets: ';
+    const exerciseSetInput = document.createElement('input');
+    exerciseSetInput.setAttribute('type', 'text');
+
+    // *** create label and input tags for exercise repetitions ***
+    const exerciseRepetitionLabel = document.createElement('label');
+    exerciseRepetitionLabel.innerText = 'Repetitions: ';
+    const exerciseRepetitionInput = document.createElement('input');
+    exerciseRepetitionInput.setAttribute('type', 'text');
+
+    
 
     
 
