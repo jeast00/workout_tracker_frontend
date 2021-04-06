@@ -56,7 +56,14 @@ function saveWorkoutName() {
     const exerciseRepetitionInput = document.createElement('input');
     exerciseRepetitionInput.setAttribute('type', 'text');
 
+    // *** create label and input tags for exercise time ***
+    const exerciseTimeLabel = document.createElement('label');
+    exerciseTimeLabel.innerText = 'Time: ';
+    const exerciseTimeInput = document.createElement('input');
+    exerciseTimeInput.setAttribute('type', 'text');
     
+
+
 
     
 
