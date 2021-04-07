@@ -63,7 +63,8 @@ function saveWorkoutName() {
     exerciseForm.appendChild(exerciseTimeInput);
     exerciseForm.appendChild(exerciseSubmitted);  
     // console.log(exerciseForm);
-    
+
+    // add an event listener for the exercise form on submit, and call the function to save the exercise info
     exerciseForm.addEventListener('submit', saveExerciseInfo)
 
     // create a unordered list element and append it with with workout
@@ -83,25 +84,31 @@ function saveWorkoutName() {
 // add a function to save the exercise values and append them to the DOM
 function saveExerciseInfo(e) {
     e.preventDefault();
-    const nameInput = e.target.children[0].value
+    const nameInput = e.target.children[0].value // validate the input for the exercise name from the event target value
     // console.log(nameInput);
     const setInput = e.target.children[1].value
     const repInput = e.target.children[2].value
     const timeInput = e.target.children[3].value
     const exerciseUL = e.target.children[5]
     
+    // create a list element for the exercise name
     const exerciseNameLI = document.createElement('li');
     exerciseNameLI.innerText = `Exercise Name: ${nameInput}`;
 
+    // create a list element for the exercise set
     const exerciseSetLI = document.createElement('li');
     exerciseSetLI.innerText = `Sets: ${setInput}`;
 
+    // create a list element for the exercise repetition
     const exerciseRepLI = document.createElement('li')
     exerciseRepLI.innerText = `Reps: ${repInput}`;
 
+    // create a list element for the exercise time
     const exerciseTimeLI = document.createElement('li')
     exerciseTimeLI.innerText = `Time: ${timeInput} minute(s)`;
 
+
+    // append the list elements to the UL tag from the event target 
     exerciseUL.append(exerciseNameLI, exerciseSetLI, exerciseRepLI, exerciseTimeLI)
 
     
