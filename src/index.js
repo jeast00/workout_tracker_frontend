@@ -118,9 +118,12 @@ function saveExerciseInfo(e) {
 
 }
 
+
+// create a function to fetch the workouts
 function fetchWorkouts() {
     fetch(workoutURL)
     .then(resp => console.log(resp))
+    .catch(err => alert(err)) // alert errors under a catch
 }
 
-fetchWorkouts();
+fetchWorkouts(); // call the fetch request for workouts
