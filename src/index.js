@@ -6,6 +6,7 @@ const workoutFormContainer = document.getElementById('workout_form_container');
 const workoutForm = document.getElementById('workout_form');
 const workoutNameInput = document.getElementById('workout_name_input');
 const workoutNameList = document.getElementById('workout_name_list');
+const workoutURL = `http://localhost:3000/workouts`;
 // const exerciseFormContainer = document.getElementById('exercise_form_container');
 // const workoutExerciseContainer = document.getElementById('workout_exercise_container');
 // const workoutListContainer = document.getElementById('workout_list_container');
@@ -116,3 +117,10 @@ function saveExerciseInfo(e) {
     e.target.reset(); // reset the exercise form after submission
 
 }
+
+function fetchWorkouts() {
+    fetch(workoutURL)
+    .then(resp => console.log(resp))
+}
+
+fetchWorkouts();
