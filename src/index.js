@@ -113,7 +113,6 @@ function saveExerciseInfo(e) {
 
     
     // console.log(nameInput, setInput, repInput, timeInput);
-
-
+    e.target.reset();
 
 }
