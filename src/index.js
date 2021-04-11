@@ -7,6 +7,7 @@ const workoutForm = document.getElementById('workout_form');
 const workoutNameInput = document.getElementById('workout_name_input');
 const workoutNameList = document.getElementById('workout_name_list');
 const workoutURL = `http://localhost:3000/workouts`;
+const exerciseURL = `http://localhost:3000/exercises`;
 
 
 // console.log(addWorkoutButton); // checked ********
@@ -130,3 +131,12 @@ function fetchWorkouts() {
 }
 
 fetchWorkouts(); // call the fetch request for workouts
+
+// create a function to fetch the exercises
+function fetchExercises() {
+    fetch(exerciseURL)
+    .then(resp => console.log(resp))
+    .catch(err => alert(err))
+}
+
+fetchExercises(); // call the fetch request for exercises
