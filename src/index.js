@@ -23,7 +23,7 @@ function saveWorkoutName() {
 }
 
 // create a function to show the workout name on the DOM
-function showWorkoutName(workoutName) {
+function showWorkout(workoutName) {
     // add elements and DOM manipulation here
     // create elements to append to the DOM
     // const workoutNameDiv = document.createElement('div');
@@ -126,7 +126,7 @@ function saveExerciseInfo(e) {
 function fetchWorkouts() {
     fetch(workoutURL)
     .then(resp => resp.json())
-    .then(workouts => workouts.forEach(workout => showWorkoutName(workout.name)))
+    .then(workouts => workouts.forEach(workout => showWorkout(workout.name)))
     .catch(err => alert(err)) // alert errors under a catch
 }
 
