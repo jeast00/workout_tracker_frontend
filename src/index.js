@@ -16,20 +16,20 @@ const exerciseURL = `http://localhost:3000/exercises`;
 workoutForm.addEventListener('submit', saveWorkoutName)
 
 // add a function to add the Workout Name to the DOM, hide the workout form, and reveal the exercise form
-function saveWorkoutName() {
-    event.preventDefault(); // if event listener is a 'submit' have a preventDefault function on the event
+function saveWorkoutName(e) {
+    e.preventDefault(); // if event listener is a 'submit' have a preventDefault function on the event
 
 
 }
 
 // create a function to show the workout name on the DOM
 function showWorkout(workout) {
-    console.log(workout);
+    // console.log(workout);
     // add elements and DOM manipulation here
     // create elements to append to the DOM
     // const workoutNameDiv = document.createElement('div');
     const workoutNameLI = document.createElement('li');
-    workoutNameLI.innerText = `Workout Name: ${workout}`;
+    workoutNameLI.innerText = `Workout Name: ${workout.name}`;
 
     // create form for exercise 
     const exerciseForm = document.createElement('form');
@@ -81,6 +81,23 @@ function showWorkout(workout) {
     // workoutName.data.attributes.exercises.forEach(exercise => { // COME BACK TO THIS AFTER CREATING THE SERIALIZER
     //     console.log(exercise);
     // });
+
+    workout.exercises.forEach(exercise => {
+        const exerciseName = document.createElement('li');
+        exerciseName.innerText = `Exercise Name: ${exercise.name}`;
+
+        const exerciseSet = document.createElement('li');
+        exerciseSet.innerText = `Sets: ${exercise.sets}`;
+
+        const exerciseRep = document.createElement('li');
+        exerciseRep.innerText = `Reps: ${exercise.repetitions}`;
+
+        const exerciseTime = document.createElement('li');
+        exerciseTime.innerText = `Time: ${exercise.time} minute(s)`;
+
+        exerciseInfo.append(exerciseName, exerciseSet, exerciseRep, exerciseTime);
+
+    });
 
     // append workout name to the DOM
     // workoutNameDiv.append(workoutNameP, exerciseForm);
@@ -139,7 +156,7 @@ function createExerciseInfo(nameInput, setInput, repInput, timeInput, exerciseUL
 function fetchWorkouts() {
     fetch(workoutURL)
     .then(resp => resp.json())
-    .then(workouts => workouts.forEach(workout => showWorkout(workout.data.attributes)))
+    .then(workouts => workouts.forEach(workout => showWorkout(workout.data.attributes))) // passing in the parameter of the workout serializer for data and attributes
     // .catch(err=> alert(err)) // alert errors under a catch
 }
 
