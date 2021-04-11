@@ -13,12 +13,26 @@ const exerciseURL = `http://localhost:3000/exercises`;
 // console.log(addWorkoutButton); // checked ********
 
 // add an event listener to the workoutForm variable to hide the workoutForm, add elements to the DOM that show the workout Form input value, and then reveal the exercise form
-workoutForm.addEventListener('submit', saveWorkoutName)
+workoutForm.addEventListener('submit', saveWorkout)
 
 // add a function to add the Workout Name to the DOM, hide the workout form, and reveal the exercise form
-function saveWorkoutName(e) {
+function saveWorkout(e) {
     e.preventDefault(); // if event listener is a 'submit' have a preventDefault function on the event
 
+    // create a configuration object to pass through the fetch 'POST' request
+    const workoutObject = {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            name: workoutNameInput.value
+        })
+    }
+
+    fetch(workoutURL, workoutObject)
+    .then(resp => console.log(resp))
 
 }
 
