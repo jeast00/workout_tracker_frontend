@@ -94,31 +94,35 @@ function saveExerciseInfo(e) {
     const repInput = e.target.children[2].value // set variable to grab the input value of repetitions
     const timeInput = e.target.children[3].value // set variable to grab the input value of time
     const exerciseUL = e.target.children[5] // get the target element of the exercise unordered list tag
-    
-    // create a list element for the exercise name
-    const exerciseNameLI = document.createElement('li');
-    exerciseNameLI.innerText = `Exercise Name: ${nameInput}`;
 
-    // create a list element for the exercise set
-    const exerciseSetLI = document.createElement('li');
-    exerciseSetLI.innerText = `Sets: ${setInput}`;
-
-    // create a list element for the exercise repetition
-    const exerciseRepLI = document.createElement('li')
-    exerciseRepLI.innerText = `Reps: ${repInput}`;
-
-    // create a list element for the exercise time
-    const exerciseTimeLI = document.createElement('li')
-    exerciseTimeLI.innerText = `Time: ${timeInput} minute(s)`;
-
-
-    // append the list elements to the UL tag from the event target 
-    exerciseUL.append(exerciseNameLI, exerciseSetLI, exerciseRepLI, exerciseTimeLI)
-
+    createExerciseInfo(nameInput, setInput, repInput, timeInput, exerciseUL)
     
     // console.log(nameInput, setInput, repInput, timeInput);
     e.target.reset(); // reset the exercise form after submission
 
+}
+
+// create a function to create the exercise elements and append them to the DOM
+function createExerciseInfo(nameInput, setInput, repInput, timeInput, exerciseUL) {
+        // create a list element for the exercise name
+        const exerciseNameLI = document.createElement('li');
+        exerciseNameLI.innerText = `Exercise Name: ${nameInput}`;
+    
+        // create a list element for the exercise set
+        const exerciseSetLI = document.createElement('li');
+        exerciseSetLI.innerText = `Sets: ${setInput}`;
+    
+        // create a list element for the exercise repetition
+        const exerciseRepLI = document.createElement('li')
+        exerciseRepLI.innerText = `Reps: ${repInput}`;
+    
+        // create a list element for the exercise time
+        const exerciseTimeLI = document.createElement('li')
+        exerciseTimeLI.innerText = `Time: ${timeInput} minute(s)`;
+    
+    
+        // append the list elements to the UL tag from the event target 
+        exerciseUL.append(exerciseNameLI, exerciseSetLI, exerciseRepLI, exerciseTimeLI)
 }
 
 
