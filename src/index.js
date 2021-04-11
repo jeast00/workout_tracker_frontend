@@ -32,8 +32,8 @@ function saveWorkout(e) {
     }
 
     return fetch(workoutURL, workoutObject)
-            .then(resp => resp.json())
-            .then(workout => showWorkout(workout.data.attributes))
+        .then(resp => resp.json())
+        .then(workout => showWorkout(workout.data.attributes))
 }
 
 // create a function to show the workout name on the DOM
