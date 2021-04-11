@@ -122,6 +122,8 @@ function saveExerciseInfo(e) {
 }
 
 
+
+
 // create a function to fetch the workouts
 function fetchWorkouts() {
     fetch(workoutURL)
@@ -135,7 +137,8 @@ fetchWorkouts(); // call the fetch request for workouts
 // create a function to fetch the exercises
 function fetchExercises() {
     fetch(exerciseURL)
-    .then(resp => console.log(resp))
+    .then(resp => resp.json())
+    .then(exercises => exercises.forEach(exercise => console.log(exercise)))
     .catch(err => alert(err))
 }
 
