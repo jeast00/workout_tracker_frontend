@@ -31,9 +31,9 @@ function saveWorkout(e) {
         })
     }
 
-    fetch(workoutURL, workoutObject)
-    .then(resp => console.log(resp))
-
+    return fetch(workoutURL, workoutObject)
+            .then(resp => resp.json())
+            .then(workout => showWorkout(workout.data.attributes))
 }
 
 // create a function to show the workout name on the DOM
@@ -168,10 +168,10 @@ function createExerciseInfo(nameInput, setInput, repInput, timeInput, exerciseUL
 
 // create a function to fetch the workouts
 function fetchWorkouts() {
-    fetch(workoutURL)
+    return fetch(workoutURL)
     .then(resp => resp.json())
     .then(workouts => workouts.forEach(workout => showWorkout(workout.data.attributes))) // passing in the parameter of the workout serializer for data and attributes
-    // .catch(err=> alert(err)) // alert errors under a catch
+    .catch(err=> alert(err)) // alert errors under a catch
 }
 
 fetchWorkouts(); // call the fetch request for workouts
