@@ -23,12 +23,13 @@ function saveWorkoutName() {
 }
 
 // create a function to show the workout name on the DOM
-function showWorkout(workoutName) {
+function showWorkout(workout) {
+    console.log(workout);
     // add elements and DOM manipulation here
     // create elements to append to the DOM
     // const workoutNameDiv = document.createElement('div');
     const workoutNameLI = document.createElement('li');
-    workoutNameLI.innerText = `Workout Name: ${workoutName}`;
+    workoutNameLI.innerText = `Workout Name: ${workout}`;
 
     // create form for exercise 
     const exerciseForm = document.createElement('form');
@@ -73,17 +74,25 @@ function showWorkout(workoutName) {
     exerciseForm.addEventListener('submit', saveExerciseInfo)
 
     // create a unordered list element and append it with with workout
-    const exerciseList = document.createElement('ul');
+    const exerciseInfo = document.createElement('ul');
+
+    // create a serializer for workouts and pass in the data for exercises *********
+    // show the exercise info saved from the seed data / submitted data from backend - Hint - Exercise.create def create method ****
+    // workoutName.data.attributes.exercises.forEach(exercise => { // COME BACK TO THIS AFTER CREATING THE SERIALIZER
+    //     console.log(exercise);
+    // });
 
     // append workout name to the DOM
     // workoutNameDiv.append(workoutNameP, exerciseForm);
-    exerciseForm.appendChild(exerciseList);
+    exerciseForm.appendChild(exerciseInfo);
     workoutNameLI.appendChild(exerciseForm);
     workoutNameList.appendChild(workoutNameLI);
 
 
     workoutForm.reset(); // resets the form after submission
 }
+
+
 
 // add a function to save the exercise values and append them to the DOM
 function saveExerciseInfo(e) {
@@ -130,8 +139,8 @@ function createExerciseInfo(nameInput, setInput, repInput, timeInput, exerciseUL
 function fetchWorkouts() {
     fetch(workoutURL)
     .then(resp => resp.json())
-    .then(workouts => workouts.forEach(workout => showWorkout(workout.name)))
-    .catch(err => alert(err)) // alert errors under a catch
+    .then(workouts => workouts.forEach(workout => showWorkout(workout.data.attributes)))
+    // .catch(err=> alert(err)) // alert errors under a catch
 }
 
 fetchWorkouts(); // call the fetch request for workouts
