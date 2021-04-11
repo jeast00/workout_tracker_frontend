@@ -22,12 +22,12 @@ function saveWorkoutName() {
 }
 
 // create a function to show the workout name on the DOM
-function showWorkoutName() {
+function showWorkoutName(workoutName) {
     // add elements and DOM manipulation here
     // create elements to append to the DOM
     // const workoutNameDiv = document.createElement('div');
     const workoutNameLI = document.createElement('li');
-    workoutNameLI.innerText = `Workout Name: ${workoutNameInput.value}`;
+    workoutNameLI.innerText = `Workout Name: ${workoutName}`;
 
     // create form for exercise 
     const exerciseForm = document.createElement('form');
