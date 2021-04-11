@@ -7,13 +7,9 @@ const workoutForm = document.getElementById('workout_form');
 const workoutNameInput = document.getElementById('workout_name_input');
 const workoutNameList = document.getElementById('workout_name_list');
 const workoutURL = `http://localhost:3000/workouts`;
-// const exerciseFormContainer = document.getElementById('exercise_form_container');
-// const workoutExerciseContainer = document.getElementById('workout_exercise_container');
-// const workoutListContainer = document.getElementById('workout_list_container');
-// const workoutListDiv = document.getElementById('workout_list_div');
-// const workoutList = document.getElementById('workout');
 
-// console.log(addWorkoutButton); // checked
+
+// console.log(addWorkoutButton); // checked ********
 
 // add an event listener to the workoutForm variable to hide the workoutForm, add elements to the DOM that show the workout Form input value, and then reveal the exercise form
 workoutForm.addEventListener('submit', saveWorkoutName)
@@ -21,7 +17,14 @@ workoutForm.addEventListener('submit', saveWorkoutName)
 // add a function to add the Workout Name to the DOM, hide the workout form, and reveal the exercise form
 function saveWorkoutName() {
     event.preventDefault(); // if event listener is a 'submit' have a preventDefault function on the event
-    // create elements to append to the DOM
+
+
+}
+
+// create a function to show the workout name on the DOM
+function showWorkoutName() {
+    // add elements and DOM manipulation here
+        // create elements to append to the DOM
     // const workoutNameDiv = document.createElement('div');
     const workoutNameLI = document.createElement('li');
     workoutNameLI.innerText = `Workout Name: ${workoutNameInput.value}`;
@@ -79,7 +82,6 @@ function saveWorkoutName() {
 
 
     workoutForm.reset(); // resets the form after submission
-
 }
 
 // add a function to save the exercise values and append them to the DOM
@@ -87,10 +89,10 @@ function saveExerciseInfo(e) {
     e.preventDefault();
     const nameInput = e.target.children[0].value // validate the input for the exercise name from the event target value
     // console.log(nameInput);
-    const setInput = e.target.children[1].value
-    const repInput = e.target.children[2].value
-    const timeInput = e.target.children[3].value
-    const exerciseUL = e.target.children[5]
+    const setInput = e.target.children[1].value // set variable to grab the input value of sets
+    const repInput = e.target.children[2].value // set variable to grab the input value of repetitions
+    const timeInput = e.target.children[3].value // set variable to grab the input value of time
+    const exerciseUL = e.target.children[5] // get the target element of the exercise unordered list tag
     
     // create a list element for the exercise name
     const exerciseNameLI = document.createElement('li');
@@ -122,7 +124,8 @@ function saveExerciseInfo(e) {
 // create a function to fetch the workouts
 function fetchWorkouts() {
     fetch(workoutURL)
-    .then(resp => console.log(resp))
+    .then(resp => resp.json())
+    .then(json => console.log(json))
     .catch(err => alert(err)) // alert errors under a catch
 }
 
