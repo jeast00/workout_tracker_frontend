@@ -85,7 +85,7 @@ function showWorkout(workout) {
     // console.log(exerciseForm);
 
     // add an event listener for the exercise form on submit, and call the function to save the exercise info
-    exerciseForm.addEventListener('submit', saveExerciseInfo)
+    exerciseForm.addEventListener('submit', showExerciseInfo)
 
     // create a unordered list element and append it with with workout
     const exerciseInfo = document.createElement('ul');
@@ -126,7 +126,7 @@ function showWorkout(workout) {
 
 
 // add a function to save the exercise values and append them to the DOM
-function saveExerciseInfo(e) {
+function showExerciseInfo(e) {
     e.preventDefault();
     const nameInput = e.target.children[0].value // validate the input for the exercise name from the event target value
     // console.log(nameInput);
