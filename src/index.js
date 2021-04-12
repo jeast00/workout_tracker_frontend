@@ -39,7 +39,6 @@ function saveWorkout(e) {
 
 // create a function to show the workout name on the DOM
 function showWorkout(workout) {
-    console.log(workout);
     // console.log(workout);
     // add elements and DOM manipulation here
     // create elements to append to the DOM
@@ -92,8 +91,8 @@ function showWorkout(workout) {
     // add an event listener for the exercise form on submit, and call the function to save the exercise info
     exerciseForm.addEventListener('submit', showExerciseInfo)
 
-    // create a unordered list element and append it with with workout
-    const exerciseInfo = document.createElement('ul');
+    // create a div element for exercise info and append it with with workout
+    const exerciseInfo = document.createElement('div');
 
     // create a serializer for workouts and pass in the data for exercises *********
     // show the exercise info saved from the seed data / submitted data from backend - Hint - Exercise.create def create method ****
@@ -102,6 +101,10 @@ function showWorkout(workout) {
     // });
 
     workout.exercises.forEach(exercise => {
+        const exerciseUL = document.createElement('ul');
+        exerciseUL.setAttribute('id', 'exercise_info_list');
+        exerciseUL.dataset.id = exercise.id;
+
         const exerciseName = document.createElement('li');
         exerciseName.innerText = `Exercise Name: ${exercise.name}`;
 
@@ -114,7 +117,8 @@ function showWorkout(workout) {
         const exerciseTime = document.createElement('li');
         exerciseTime.innerText = `Time: ${exercise.time} minute(s)`;
 
-        exerciseInfo.append(exerciseName, exerciseSet, exerciseRep, exerciseTime);
+        exerciseUL.append(exerciseName, exerciseSet, exerciseRep, exerciseTime);
+        exerciseInfo.appendChild(exerciseUL);
 
     });
 
@@ -140,6 +144,9 @@ function showExerciseInfo(e) {
     const timeInput = e.target.children[3].value // set variable to grab the input value of time
     const exerciseUL = e.target.children[5] // get the target element of the exercise unordered list tag
     const workout_ID = e.target.parentElement.dataset.id;
+    // const editExerciseInfoButton = document.createElement('button');
+    // editExerciseInfoButton.innerText = 'edit info';
+    // exerciseUL.append(editExerciseInfoButton);
     // console.log(workout_ID);
 
     createExerciseInfo(nameInput, setInput, repInput, timeInput, exerciseUL, workout_ID);
@@ -151,7 +158,12 @@ function showExerciseInfo(e) {
 }
 
 // create a function to create the exercise elements and append them to the DOM
-function createExerciseInfo(nameInput, setInput, repInput, timeInput, exerciseUL, workout_ID) {
+function createExerciseInfo(nameInput, setInput, repInput, timeInput, exerciseDiv, workout_ID) {
+        // create a new unordered list element for each exercise info added to the exerciseInfo target
+        const exerciseUL = document.createElement('ul');
+        exerciseUL.setAttribute('id', 'exercise_info_list');
+        exerciseUL.dataset.id = Exercise.id;
+
         // create a list element for the exercise name
         const exerciseNameLI = document.createElement('li');
         exerciseNameLI.innerText = `Exercise Name: ${nameInput}`;
@@ -168,12 +180,19 @@ function createExerciseInfo(nameInput, setInput, repInput, timeInput, exerciseUL
         exerciseRepLI.dataset.id = workout_ID;
 
         // create a list element for the exercise time
-        const exerciseTimeLI = document.createElement('li')
+        const exerciseTimeLI = document.createElement('li');
         exerciseTimeLI.innerText = `Time: ${timeInput} minute(s)`;
         exerciseTimeLI.dataset.id = workout_ID;
+
+        // create a edit button element to update the exercise info
+        const editExerciseInfoButton = document.createElement('button');
+        editExerciseInfoButton.value = 'edit info';
+        console.log(editExerciseInfoButton);
     
         // append the list elements to the UL tag from the event target 
-        exerciseUL.append(exerciseNameLI, exerciseSetLI, exerciseRepLI, exerciseTimeLI)
+        exerciseUL.append(exerciseNameLI, exerciseSetLI, exerciseRepLI, exerciseTimeLI);
+        console.log(exerciseUL);
+        exerciseDiv.appendChild(exerciseUL)
 }
 
 // create a function to fetch post request the exercise info being submitted to the backend database ****
@@ -202,6 +221,11 @@ function fetchWorkouts() {
     .then(resp => resp.json())
     .then(workouts => workouts.forEach(workout => showWorkout(workout.data.attributes))) // passing in the parameter of the workout serializer for data and attributes
     .catch(err=> alert(err)) // alert errors under a catch
+}
+
+// create a function to edit / update exercise info *** fetch patch request ***
+function fetchUpdateExerciseInfo() {
+
 }
 
 fetchWorkouts(); // call the fetch request for workouts
