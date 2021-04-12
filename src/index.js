@@ -135,7 +135,8 @@ function showExerciseInfo(e) {
     const timeInput = e.target.children[3].value // set variable to grab the input value of time
     const exerciseUL = e.target.children[5] // get the target element of the exercise unordered list tag
 
-    createExerciseInfo(nameInput, setInput, repInput, timeInput, exerciseUL)
+    createExerciseInfo(nameInput, setInput, repInput, timeInput, exerciseUL);
+    saveExerciseInfo(nameInput, setInput, repInput, timeInput);
     
     // console.log(nameInput, setInput, repInput, timeInput);
     e.target.reset(); // reset the exercise form after submission
@@ -166,8 +167,21 @@ function createExerciseInfo(nameInput, setInput, repInput, timeInput, exerciseUL
 }
 
 // create a function to fetch post request the exercise info being submitted to the backend database ****
-function saveExerciseInfo() {
-    
+function saveExerciseInfo(exerciseName, exerciseSet, exerciseRep, exerciseTime) {
+    const exerciseInfoObject = {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            name: exerciseName,
+            sets: exerciseSet,
+            repetitions: exerciseRep,
+            time: exerciseTime
+        })
+    }
+    return fetch(exerciseURL, exerciseInfoObject)
 }
 
 
