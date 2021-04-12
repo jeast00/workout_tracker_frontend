@@ -34,16 +34,21 @@ function saveWorkout(e) {
     return fetch(workoutURL, workoutObject)
         .then(resp => resp.json())
         .then(workout => showWorkout(workout.data.attributes))
+
 }
 
 // create a function to show the workout name on the DOM
 function showWorkout(workout) {
+    console.log(workout);
     // console.log(workout);
     // add elements and DOM manipulation here
     // create elements to append to the DOM
     // const workoutNameDiv = document.createElement('div');
     const workoutNameLI = document.createElement('li');
     workoutNameLI.innerText = `Workout Name: ${workout.name}`;
+    workoutNameLI.dataset.id = workout.id; // set the id of the workout to the dataset
+    console.log(workoutNameLI.dataset.id);
+    
 
     // create form for exercise 
     const exerciseForm = document.createElement('form');
