@@ -47,7 +47,7 @@ function showWorkout(workout) {
     const workoutNameLI = document.createElement('li');
     workoutNameLI.innerText = `Workout Name: ${workout.name}`;
     workoutNameLI.dataset.id = workout.id; // set the id of the workout to the dataset
-    console.log(workoutNameLI.dataset.id);
+    // console.log(workoutNameLI.dataset.id);
     
 
     // create form for exercise 
@@ -139,9 +139,11 @@ function showExerciseInfo(e) {
     const repInput = e.target.children[2].value // set variable to grab the input value of repetitions
     const timeInput = e.target.children[3].value // set variable to grab the input value of time
     const exerciseUL = e.target.children[5] // get the target element of the exercise unordered list tag
+    const workout_ID = e.target.parentElement.dataset.id;
+    // console.log(workout_ID);
 
-    createExerciseInfo(nameInput, setInput, repInput, timeInput, exerciseUL);
-    saveExerciseInfo(nameInput, setInput, repInput, timeInput);
+    createExerciseInfo(nameInput, setInput, repInput, timeInput, exerciseUL, workout_ID);
+    saveExerciseInfo(nameInput, setInput, repInput, timeInput, workout_ID);
     
     // console.log(nameInput, setInput, repInput, timeInput);
     e.target.reset(); // reset the exercise form after submission
@@ -149,30 +151,33 @@ function showExerciseInfo(e) {
 }
 
 // create a function to create the exercise elements and append them to the DOM
-function createExerciseInfo(nameInput, setInput, repInput, timeInput, exerciseUL) {
+function createExerciseInfo(nameInput, setInput, repInput, timeInput, exerciseUL, workout_ID) {
         // create a list element for the exercise name
         const exerciseNameLI = document.createElement('li');
         exerciseNameLI.innerText = `Exercise Name: ${nameInput}`;
+        exerciseNameLI.dataset.id = workout_ID;
     
         // create a list element for the exercise set
         const exerciseSetLI = document.createElement('li');
         exerciseSetLI.innerText = `Sets: ${setInput}`;
-    
+        exerciseSetLI.dataset.id = workout_ID;
+
         // create a list element for the exercise repetition
         const exerciseRepLI = document.createElement('li')
         exerciseRepLI.innerText = `Reps: ${repInput}`;
-    
+        exerciseRepLI.dataset.id = workout_ID;
+
         // create a list element for the exercise time
         const exerciseTimeLI = document.createElement('li')
         exerciseTimeLI.innerText = `Time: ${timeInput} minute(s)`;
-    
+        exerciseTimeLI.dataset.id = workout_ID;
     
         // append the list elements to the UL tag from the event target 
         exerciseUL.append(exerciseNameLI, exerciseSetLI, exerciseRepLI, exerciseTimeLI)
 }
 
 // create a function to fetch post request the exercise info being submitted to the backend database ****
-function saveExerciseInfo(exerciseName, exerciseSet, exerciseRep, exerciseTime) {
+function saveExerciseInfo(exerciseName, exerciseSet, exerciseRep, exerciseTime, workout_ID) {
     const exerciseInfoObject = {
         method: 'POST',
         headers: {
@@ -183,7 +188,8 @@ function saveExerciseInfo(exerciseName, exerciseSet, exerciseRep, exerciseTime) 
             name: exerciseName,
             sets: exerciseSet,
             repetitions: exerciseRep,
-            time: exerciseTime
+            time: exerciseTime,
+            workout_id: workout_ID
         })
     }
     return fetch(exerciseURL, exerciseInfoObject)
