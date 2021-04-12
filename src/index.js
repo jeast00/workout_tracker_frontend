@@ -165,6 +165,11 @@ function createExerciseInfo(nameInput, setInput, repInput, timeInput, exerciseUL
         exerciseUL.append(exerciseNameLI, exerciseSetLI, exerciseRepLI, exerciseTimeLI)
 }
 
+// create a function to fetch post request the exercise info being submitted to the backend database ****
+function saveExerciseInfo() {
+    
+}
+
 
 // create a function to fetch the workouts
 function fetchWorkouts() {
