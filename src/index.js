@@ -244,12 +244,12 @@ fetchWorkouts(); // call the fetch request for workouts
 function deleteWorkout(e) {
     // set up a fetch delete request with url and the specific workout delete button being clicked ** assign a class to the button created ** Button Created **
     e.preventDefault();
+    e.target.parentElement.remove(); // remove the workout from the html
     const workout_ID = parseInt(e.target.parentElement.dataset.id);
     // console.log(workout_ID); Tested and checked - worked
     return fetch(`${workoutURL}/${workout_ID}`, {
         method: 'DELETE'
     }).then(resp => resp.json());
 
-    debugger;
 }
 
