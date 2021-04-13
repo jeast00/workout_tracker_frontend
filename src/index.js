@@ -5,7 +5,7 @@ const addWorkoutButton = document.getElementById('add_workout_button');
 const workoutFormContainer = document.getElementById('workout_form_container');
 const workoutForm = document.getElementById('workout_form');
 const workoutNameInput = document.getElementById('workout_name_input');
-const workoutNameList = document.getElementById('workout_name_list');
+const workoutDiv = document.getElementById('workout_div');
 const workoutURL = `http://localhost:3000/workouts`;
 const exerciseURL = `http://localhost:3000/exercises`;
 
@@ -43,6 +43,7 @@ function showWorkout(workout) {
     // add elements and DOM manipulation here
     // create elements to append to the DOM
     // const workoutNameDiv = document.createElement('div');
+    const workoutNameUL = document.createElement('ul');
     const workoutNameLI = document.createElement('li');
     workoutNameLI.innerText = `Workout Name: ${workout.name}`;
     workoutNameLI.dataset.id = workout.id; // set the id of the workout to the dataset
@@ -126,7 +127,8 @@ function showWorkout(workout) {
     // workoutNameDiv.append(workoutNameP, exerciseForm);
     exerciseForm.appendChild(exerciseInfo);
     workoutNameLI.appendChild(exerciseForm);
-    workoutNameList.appendChild(workoutNameLI);
+    workoutNameUL.appendChild(workoutNameLI);
+    workoutDiv.appendChild(workoutNameUL);
 
 
     workoutForm.reset(); // resets the form after submission
@@ -224,9 +226,14 @@ function fetchWorkouts() {
 }
 
 // create a function to edit / update exercise info *** fetch patch request ***
-function fetchUpdateExerciseInfo() {
+// function fetchUpdateExerciseInfo() {
 
-}
+// }
 
 fetchWorkouts(); // call the fetch request for workouts
+
+// create a delete function to delete entire workout
+function deleteWorkout() {
+    // set up a fetch delete request with url and the specific workout delete button being clicked ** assign a class to the button created
+}
 
