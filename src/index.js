@@ -49,6 +49,9 @@ function showWorkout(workout) {
     workoutNameLI.innerText = `Workout Name: ${workout.name}`;
     workoutNameLI.dataset.id = workout.id; // set the id of the workout to the dataset
     // console.log(workoutNameLI.dataset.id);
+    const deleteWorkoutButton = document.createElement('button');
+    deleteWorkoutButton.className = 'delete_workout_button';
+    deleteWorkoutButton.innerText = 'Delete Workout?';
     
 
     // create form for exercise 
@@ -126,8 +129,9 @@ function showWorkout(workout) {
 
     // append workout name to the DOM
     // workoutNameDiv.append(workoutNameP, exerciseForm);
-    exerciseForm.appendChild(exerciseInfo);
+    exerciseForm.append(exerciseInfo);
     workoutNameLI.appendChild(exerciseForm);
+    workoutNameLI.append(deleteWorkoutButton)
     workoutNameUL.appendChild(workoutNameLI);
     workoutDiv.appendChild(workoutNameUL);
 
