@@ -137,6 +137,9 @@ function showWorkout(workout) {
 
 
     workoutForm.reset(); // resets the form after submission
+
+    // add the event listener for the delete workout button here with the deleteWorkout function called
+    deleteWorkoutButton.addEventListener('click', deleteWorkout);
 }
 
 
@@ -238,7 +241,10 @@ function fetchWorkouts() {
 fetchWorkouts(); // call the fetch request for workouts
 
 // create a delete function to delete entire workout
-function deleteWorkout() {
-    // set up a fetch delete request with url and the specific workout delete button being clicked ** assign a class to the button created
+function deleteWorkout(e) {
+    // set up a fetch delete request with url and the specific workout delete button being clicked ** assign a class to the button created ** Button Created **
+    e.preventDefault();
+    const workout_ID = parseInt(e.target.parentElement.dataset.id);
+    console.log(workout_ID);
 }
 
