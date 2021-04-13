@@ -1,8 +1,8 @@
 // console.log("Test js page");
 
 // add variables to the top - hoisting
-const addWorkoutButton = document.getElementById('add_workout_button');
-const workoutFormContainer = document.getElementById('workout_form_container');
+// const addWorkoutButton = document.getElementById('add_workout_button'); Not being used
+// const workoutContainer = document.getElementById('workout_container'); Not being Used
 const workoutForm = document.getElementById('workout_form');
 const workoutNameInput = document.getElementById('workout_name_input');
 const workoutDiv = document.getElementById('workout_div');
@@ -44,6 +44,7 @@ function showWorkout(workout) {
     // create elements to append to the DOM
     // const workoutNameDiv = document.createElement('div');
     const workoutNameUL = document.createElement('ul');
+    workoutNameUL.className = 'workout_name_ul';
     const workoutNameLI = document.createElement('li');
     workoutNameLI.innerText = `Workout Name: ${workout.name}`;
     workoutNameLI.dataset.id = workout.id; // set the id of the workout to the dataset
@@ -164,7 +165,7 @@ function createExerciseInfo(nameInput, setInput, repInput, timeInput, exerciseDi
         // create a new unordered list element for each exercise info added to the exerciseInfo target
         const exerciseUL = document.createElement('ul');
         exerciseUL.setAttribute('id', 'exercise_info_list');
-        exerciseUL.dataset.id = Exercise.id;
+        // exerciseUL.dataset.id = Exercise.id;
 
         // create a list element for the exercise name
         const exerciseNameLI = document.createElement('li');
