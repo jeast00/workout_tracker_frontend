@@ -1,13 +1,35 @@
 class Workout {
 
+    constructor(workout) {
+        this.id = workout.id
+        console.log(this.id);
+    }
+
+
+
+    static showWorkouts(workouts) {
+        for(let workout of workouts) {
+            showWorkout(workout);
+        };
+    }
+
+    
+
    
 
     static fetchWorkouts() {
-    return fetch(workoutURL)
-    .then(resp => resp.json())
-    .then(workouts => workouts.forEach(workout => showWorkout(workout.data.attributes))) // passing in the parameter of the workout serializer for data and attributes
-    .catch(err=> alert(err))
-}
+        return fetch(workoutURL)
+        .then(resp => resp.json())
+        .then(workouts => {
+            for(let workout of workouts) {
+                let newWorkout = new Workout(workout.data.attributes);
+                newWorkout.showWorkout();
+            }
+        })
+        .catch(err=> alert(err))
+    }
+
+
 
 
     showWorkout(workout) {
