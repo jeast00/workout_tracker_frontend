@@ -6,13 +6,14 @@ class Workout {
     constructor(workout) {
         this.id = workout.id
         this.name = workout.name
+        this.exercises = workout.exercises
         Workout.allWorkouts.push(this)
     }
 
 
 
     static showWorkouts() {
-        console.log(this.allWorkouts);
+        // console.log(this.allWorkouts);
         this.allWorkouts.forEach(workout => {
             workout.showWorkout();
         })
@@ -28,7 +29,7 @@ class Workout {
             });
             this.showWorkouts();
         })
-        // .catch(err=> alert(err))
+        .catch(err=> alert(err))
     }
 
 
@@ -98,27 +99,29 @@ class Workout {
     //     console.log(exercise);
     // });
 
-    // this.exercises.forEach(exercise => {
-    //     const exerciseUL = document.createElement('ul');
-    //     exerciseUL.setAttribute('id', 'exercise_info_list');
-    //     exerciseUL.dataset.id = exercise.id;
+    // console.log(this.exercises);
 
-    //     const exerciseName = document.createElement('li');
-    //     exerciseName.innerText = `Exercise Name: ${exercise.name}`;
+    this.exercises.forEach(exercise => {
+        const exerciseUL = document.createElement('ul');
+        exerciseUL.setAttribute('id', 'exercise_info_list');
+        exerciseUL.dataset.id = exercise.id;
 
-    //     const exerciseSet = document.createElement('li');
-    //     exerciseSet.innerText = `Sets: ${exercise.sets}`;
+        const exerciseName = document.createElement('li');
+        exerciseName.innerText = `Exercise Name: ${exercise.name}`;
 
-    //     const exerciseRep = document.createElement('li');
-    //     exerciseRep.innerText = `Reps: ${exercise.repetitions}`;
+        const exerciseSet = document.createElement('li');
+        exerciseSet.innerText = `Sets: ${exercise.sets}`;
 
-    //     const exerciseTime = document.createElement('li');
-    //     exerciseTime.innerText = `Time: ${exercise.time} minute(s)`;
+        const exerciseRep = document.createElement('li');
+        exerciseRep.innerText = `Reps: ${exercise.repetitions}`;
 
-    //     exerciseUL.append(exerciseName, exerciseSet, exerciseRep, exerciseTime);
-    //     exerciseInfo.appendChild(exerciseUL);
+        const exerciseTime = document.createElement('li');
+        exerciseTime.innerText = `Time: ${exercise.time} minute(s)`;
 
-    // });
+        exerciseUL.append(exerciseName, exerciseSet, exerciseRep, exerciseTime);
+        exerciseInfo.appendChild(exerciseUL);
+
+    });
 
     // append workout name to the DOM
     // workoutNameDiv.append(workoutNameP, exerciseForm);

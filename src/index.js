@@ -201,9 +201,9 @@ function createExerciseInfo(nameInput, setInput, repInput, timeInput, exerciseDi
         exerciseTimeLI.dataset.id = workout_ID;
 
         // create a edit button element to update the exercise info
-        const editExerciseInfoButton = document.createElement('button');
-        editExerciseInfoButton.value = 'edit info';
-        console.log(editExerciseInfoButton);
+        // const editExerciseInfoButton = document.createElement('button');
+        // editExerciseInfoButton.value = 'edit info';
+        // console.log(editExerciseInfoButton);
     
         // append the list elements to the UL tag from the event target 
         exerciseUL.append(exerciseNameLI, exerciseSetLI, exerciseRepLI, exerciseTimeLI);
