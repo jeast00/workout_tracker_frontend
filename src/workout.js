@@ -15,14 +15,13 @@ class Workout {
         
     }
    
-
-    fetchWorkouts() {
+    // gets rid of the Uncaught TypeError: not a function when using static
+    static getWorkouts() {
         return fetch(workoutURL)
         .then(resp => resp.json())
         .then(workouts => {
             for(let workout of workouts) {
                 let newWorkout = new Workout(workout.data.attributes);
-                newWorkout.showWorkout();
             }
         })
         .catch(err=> alert(err))

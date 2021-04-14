@@ -244,7 +244,7 @@ function fetchWorkouts() {
 
 // // }
 
-Workout.fetchWorkouts(); // call the fetch request for workouts
+// Workout.fetchWorkouts(); // call the fetch request for workouts
 
 // // create a delete function to delete entire workout
 // function deleteWorkout(e) {
@@ -258,4 +258,6 @@ Workout.fetchWorkouts(); // call the fetch request for workouts
 //     }).then(resp => resp.json());
 
 // }
+
+Workout.getWorkouts();
 
