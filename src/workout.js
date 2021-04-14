@@ -7,14 +7,14 @@ class Workout {
 
 
 
-    static showWorkouts(workouts) {
+    showWorkouts(workouts) {
         for(let workout of workouts) {
             showWorkout(workout);
         };
     }
    
 
-    static fetchWorkouts() {
+    fetchWorkouts() {
         return fetch(workoutURL)
         .then(resp => resp.json())
         .then(workouts => {
@@ -128,7 +128,7 @@ class Workout {
 
     // add the event listener for the delete workout button here with the deleteWorkout function called
     // deleteWorkoutButton.addEventListener('click', deleteWorkout);
-}
+    }
 
 
 
