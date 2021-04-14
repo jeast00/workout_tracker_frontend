@@ -11,8 +11,11 @@ class Workout {
 
 
 
-    showWorkouts() {
-        
+    static showWorkouts() {
+        console.log(this.allWorkouts);
+        this.allWorkouts.forEach(workout => {
+            workout.showWorkout();
+        })
     }
    
     // gets rid of the Uncaught TypeError: not a function when using static
@@ -20,21 +23,24 @@ class Workout {
         return fetch(workoutURL)
         .then(resp => resp.json())
         .then(workouts => {
-            console.log(workouts);
+            workouts.forEach(workout => {
+                new Workout(workout.data.attributes);
+            });
+            this.showWorkouts();
         })
-        .catch(err=> alert(err))
+        // .catch(err=> alert(err))
     }
 
 
 
 
-    showWorkout(workout) {
+    showWorkout() {
     const workoutNameUL = document.createElement('ul');
     workoutNameUL.className = 'workout_name_ul';
 
     const workoutNameLI = document.createElement('li');
-    workoutNameLI.innerText = `Workout Name: ${workout.name}`;
-    workoutNameLI.dataset.id = workout.id;
+    workoutNameLI.innerText = `Workout Name: ${this.name}`;
+    workoutNameLI.dataset.id = this.id;
 
     const deleteWorkoutButton = document.createElement('button');
     deleteWorkoutButton.className = 'delete_workout_button';
@@ -92,27 +98,27 @@ class Workout {
     //     console.log(exercise);
     // });
 
-    workout.exercises.forEach(exercise => {
-        const exerciseUL = document.createElement('ul');
-        exerciseUL.setAttribute('id', 'exercise_info_list');
-        exerciseUL.dataset.id = exercise.id;
+    // this.exercises.forEach(exercise => {
+    //     const exerciseUL = document.createElement('ul');
+    //     exerciseUL.setAttribute('id', 'exercise_info_list');
+    //     exerciseUL.dataset.id = exercise.id;
 
-        const exerciseName = document.createElement('li');
-        exerciseName.innerText = `Exercise Name: ${exercise.name}`;
+    //     const exerciseName = document.createElement('li');
+    //     exerciseName.innerText = `Exercise Name: ${exercise.name}`;
 
-        const exerciseSet = document.createElement('li');
-        exerciseSet.innerText = `Sets: ${exercise.sets}`;
+    //     const exerciseSet = document.createElement('li');
+    //     exerciseSet.innerText = `Sets: ${exercise.sets}`;
 
-        const exerciseRep = document.createElement('li');
-        exerciseRep.innerText = `Reps: ${exercise.repetitions}`;
+    //     const exerciseRep = document.createElement('li');
+    //     exerciseRep.innerText = `Reps: ${exercise.repetitions}`;
 
-        const exerciseTime = document.createElement('li');
-        exerciseTime.innerText = `Time: ${exercise.time} minute(s)`;
+    //     const exerciseTime = document.createElement('li');
+    //     exerciseTime.innerText = `Time: ${exercise.time} minute(s)`;
 
-        exerciseUL.append(exerciseName, exerciseSet, exerciseRep, exerciseTime);
-        exerciseInfo.appendChild(exerciseUL);
+    //     exerciseUL.append(exerciseName, exerciseSet, exerciseRep, exerciseTime);
+    //     exerciseInfo.appendChild(exerciseUL);
 
-    });
+    // });
 
     // append workout name to the DOM
     // workoutNameDiv.append(workoutNameP, exerciseForm);
