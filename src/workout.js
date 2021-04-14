@@ -1,25 +1,23 @@
 class Workout {
+
    
 
-    fetchWorkouts() {
+    static fetchWorkouts() {
     return fetch(workoutURL)
     .then(resp => resp.json())
     .then(workouts => workouts.forEach(workout => showWorkout(workout.data.attributes))) // passing in the parameter of the workout serializer for data and attributes
-    .catch(err=> alert(err)) // alert errors under a catch
+    .catch(err=> alert(err))
 }
 
 
     showWorkout(workout) {
-    // console.log(workout);
-    // add elements and DOM manipulation here
-    // create elements to append to the DOM
-    // const workoutNameDiv = document.createElement('div');
     const workoutNameUL = document.createElement('ul');
     workoutNameUL.className = 'workout_name_ul';
+
     const workoutNameLI = document.createElement('li');
     workoutNameLI.innerText = `Workout Name: ${workout.name}`;
-    workoutNameLI.dataset.id = workout.id; // set the id of the workout to the dataset
-    // console.log(workoutNameLI.dataset.id);
+    workoutNameLI.dataset.id = workout.id;
+
     const deleteWorkoutButton = document.createElement('button');
     deleteWorkoutButton.className = 'delete_workout_button';
     deleteWorkoutButton.innerText = 'Delete Workout?';
