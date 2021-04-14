@@ -1,32 +1,15 @@
 class Workout {
-    constructor(name) {
-        console.log(name);
-    }
+   
+
+    fetchWorkouts() {
+    return fetch(workoutURL)
+    .then(resp => resp.json())
+    .then(workouts => workouts.forEach(workout => showWorkout(workout.data.attributes))) // passing in the parameter of the workout serializer for data and attributes
+    .catch(err=> alert(err)) // alert errors under a catch
+}
 
 
-    saveWorkout(e) {
-        e.preventDefault(); // if event listener is a 'submit' have a preventDefault function on the event
-    
-        // create a configuration object to pass through the fetch 'POST' request
-        const workoutObject = {
-            method: 'POST',
-            headers: {
-                'Content-type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify({
-                name: workoutNameInput.value
-            })
-        }
-    
-        return fetch(workoutURL, workoutObject)
-            .then(resp => resp.json())
-            .then(workout => showWorkout(workout.data.attributes))
-    
-    }
-
-    // create a function to show the workout name on the DOM
-showWorkout(workout) {
+    showWorkout(workout) {
     // console.log(workout);
     // add elements and DOM manipulation here
     // create elements to append to the DOM
@@ -131,28 +114,5 @@ showWorkout(workout) {
 }
 
 
-
-// add a function to save the exercise values and append them to the DOM
-// showExerciseInfo(e) {
-//     e.preventDefault();
-//     const nameInput = e.target.children[0].value // validate the input for the exercise name from the event target value
-//     // console.log(nameInput);
-//     const setInput = e.target.children[1].value // set variable to grab the input value of sets
-//     const repInput = e.target.children[2].value // set variable to grab the input value of repetitions
-//     const timeInput = e.target.children[3].value // set variable to grab the input value of time
-//     const exerciseUL = e.target.children[5] // get the target element of the exercise unordered list tag
-//     const workout_ID = e.target.parentElement.dataset.id;
-//     // const editExerciseInfoButton = document.createElement('button');
-//     // editExerciseInfoButton.innerText = 'edit info';
-//     // exerciseUL.append(editExerciseInfoButton);
-//     // console.log(workout_ID);
-
-//     createExerciseInfo(nameInput, setInput, repInput, timeInput, exerciseUL, workout_ID);
-//     saveExerciseInfo(nameInput, setInput, repInput, timeInput, workout_ID);
-    
-//     // console.log(nameInput, setInput, repInput, timeInput);
-//     e.target.reset(); // reset the exercise form after submission
-
-// }
 
 }

@@ -167,89 +167,89 @@ const exerciseURL = `http://localhost:3000/exercises`;
 
 // }
 
-// create a function to create the exercise elements and append them to the DOM
-function createExerciseInfo(nameInput, setInput, repInput, timeInput, exerciseDiv, workout_ID) {
-        // create a new unordered list element for each exercise info added to the exerciseInfo target
-        const exerciseUL = document.createElement('ul');
-        exerciseUL.setAttribute('id', 'exercise_info_list');
-        // exerciseUL.dataset.id = Exercise.id;
+// // create a function to create the exercise elements and append them to the DOM
+// function createExerciseInfo(nameInput, setInput, repInput, timeInput, exerciseDiv, workout_ID) {
+//         // create a new unordered list element for each exercise info added to the exerciseInfo target
+//         const exerciseUL = document.createElement('ul');
+//         exerciseUL.setAttribute('id', 'exercise_info_list');
+//         // exerciseUL.dataset.id = Exercise.id;
 
-        // create a list element for the exercise name
-        const exerciseNameLI = document.createElement('li');
-        exerciseNameLI.innerText = `Exercise Name: ${nameInput}`;
-        exerciseNameLI.dataset.id = workout_ID;
+//         // create a list element for the exercise name
+//         const exerciseNameLI = document.createElement('li');
+//         exerciseNameLI.innerText = `Exercise Name: ${nameInput}`;
+//         exerciseNameLI.dataset.id = workout_ID;
     
-        // create a list element for the exercise set
-        const exerciseSetLI = document.createElement('li');
-        exerciseSetLI.innerText = `Sets: ${setInput}`;
-        exerciseSetLI.dataset.id = workout_ID;
+//         // create a list element for the exercise set
+//         const exerciseSetLI = document.createElement('li');
+//         exerciseSetLI.innerText = `Sets: ${setInput}`;
+//         exerciseSetLI.dataset.id = workout_ID;
 
-        // create a list element for the exercise repetition
-        const exerciseRepLI = document.createElement('li')
-        exerciseRepLI.innerText = `Reps: ${repInput}`;
-        exerciseRepLI.dataset.id = workout_ID;
+//         // create a list element for the exercise repetition
+//         const exerciseRepLI = document.createElement('li')
+//         exerciseRepLI.innerText = `Reps: ${repInput}`;
+//         exerciseRepLI.dataset.id = workout_ID;
 
-        // create a list element for the exercise time
-        const exerciseTimeLI = document.createElement('li');
-        exerciseTimeLI.innerText = `Time: ${timeInput} minute(s)`;
-        exerciseTimeLI.dataset.id = workout_ID;
+//         // create a list element for the exercise time
+//         const exerciseTimeLI = document.createElement('li');
+//         exerciseTimeLI.innerText = `Time: ${timeInput} minute(s)`;
+//         exerciseTimeLI.dataset.id = workout_ID;
 
-        // create a edit button element to update the exercise info
-        const editExerciseInfoButton = document.createElement('button');
-        editExerciseInfoButton.value = 'edit info';
-        console.log(editExerciseInfoButton);
+//         // create a edit button element to update the exercise info
+//         const editExerciseInfoButton = document.createElement('button');
+//         editExerciseInfoButton.value = 'edit info';
+//         console.log(editExerciseInfoButton);
     
-        // append the list elements to the UL tag from the event target 
-        exerciseUL.append(exerciseNameLI, exerciseSetLI, exerciseRepLI, exerciseTimeLI);
-        console.log(exerciseUL);
-        exerciseDiv.appendChild(exerciseUL)
-}
-
-// create a function to fetch post request the exercise info being submitted to the backend database ****
-function saveExerciseInfo(exerciseName, exerciseSet, exerciseRep, exerciseTime, workout_ID) {
-    const exerciseInfoObject = {
-        method: 'POST',
-        headers: {
-            'Content-type': 'application/json',
-            'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-            name: exerciseName,
-            sets: exerciseSet,
-            repetitions: exerciseRep,
-            time: exerciseTime,
-            workout_id: workout_ID
-        })
-    }
-    return fetch(exerciseURL, exerciseInfoObject)
-}
-
-
-// create a function to fetch the workouts
-function fetchWorkouts() {
-    return fetch(workoutURL)
-    .then(resp => resp.json())
-    .then(workouts => workouts.forEach(workout => showWorkout(workout.data.attributes))) // passing in the parameter of the workout serializer for data and attributes
-    .catch(err=> alert(err)) // alert errors under a catch
-}
-
-// create a function to edit / update exercise info *** fetch patch request ***
-// function fetchUpdateExerciseInfo() {
-
+//         // append the list elements to the UL tag from the event target 
+//         exerciseUL.append(exerciseNameLI, exerciseSetLI, exerciseRepLI, exerciseTimeLI);
+//         console.log(exerciseUL);
+//         exerciseDiv.appendChild(exerciseUL)
 // }
 
-fetchWorkouts(); // call the fetch request for workouts
+// // create a function to fetch post request the exercise info being submitted to the backend database ****
+// function saveExerciseInfo(exerciseName, exerciseSet, exerciseRep, exerciseTime, workout_ID) {
+//     const exerciseInfoObject = {
+//         method: 'POST',
+//         headers: {
+//             'Content-type': 'application/json',
+//             'Accept': 'application/json'
+//         },
+//         body: JSON.stringify({
+//             name: exerciseName,
+//             sets: exerciseSet,
+//             repetitions: exerciseRep,
+//             time: exerciseTime,
+//             workout_id: workout_ID
+//         })
+//     }
+//     return fetch(exerciseURL, exerciseInfoObject)
+// }
 
-// create a delete function to delete entire workout
-function deleteWorkout(e) {
-    // set up a fetch delete request with url and the specific workout delete button being clicked ** assign a class to the button created ** Button Created **
-    e.preventDefault();
-    e.target.parentElement.remove(); // remove the workout from the html
-    const workout_ID = parseInt(e.target.parentElement.dataset.id);
-    // console.log(workout_ID); Tested and checked - worked
-    return fetch(`${workoutURL}/${workout_ID}`, {
-        method: 'DELETE'
-    }).then(resp => resp.json());
 
-}
+// // create a function to fetch the workouts
+// function fetchWorkouts() {
+//     return fetch(workoutURL)
+//     .then(resp => resp.json())
+//     .then(workouts => workouts.forEach(workout => showWorkout(workout.data.attributes))) // passing in the parameter of the workout serializer for data and attributes
+//     .catch(err=> alert(err)) // alert errors under a catch
+// }
+
+// // create a function to edit / update exercise info *** fetch patch request ***
+// // function fetchUpdateExerciseInfo() {
+
+// // }
+
+// fetchWorkouts(); // call the fetch request for workouts
+
+// // create a delete function to delete entire workout
+// function deleteWorkout(e) {
+//     // set up a fetch delete request with url and the specific workout delete button being clicked ** assign a class to the button created ** Button Created **
+//     e.preventDefault();
+//     e.target.parentElement.remove(); // remove the workout from the html
+//     const workout_ID = parseInt(e.target.parentElement.dataset.id);
+//     // console.log(workout_ID); Tested and checked - worked
+//     return fetch(`${workoutURL}/${workout_ID}`, {
+//         method: 'DELETE'
+//     }).then(resp => resp.json());
+
+// }
 
