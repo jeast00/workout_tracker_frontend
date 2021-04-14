@@ -2,7 +2,7 @@ class Workout {
 
     constructor(workout) {
         this.id = workout.id
-        console.log(this.id);
+        this.name = workout.name
     }
 
 
@@ -12,9 +12,6 @@ class Workout {
             showWorkout(workout);
         };
     }
-
-    
-
    
 
     static fetchWorkouts() {
