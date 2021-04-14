@@ -1,6 +1,9 @@
 // console.log("Test js page");
 
 const workoutTracker = new WorkoutTracker();
+console.log(workoutTracker);
+workoutTracker.getWorkouts();
+
 
 // add variables to the top - hoisting
 // const addWorkoutButton = document.getElementById('add_workout_button'); Not being used

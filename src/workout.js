@@ -14,17 +14,17 @@ class Workout {
     }
    
 
-    fetchWorkouts() {
-        return fetch(workoutURL)
-        .then(resp => resp.json())
-        .then(workouts => {
-            for(let workout of workouts) {
-                let newWorkout = new Workout(workout.data.attributes);
-                newWorkout.showWorkout();
-            }
-        })
-        .catch(err=> alert(err))
-    }
+    // fetchWorkouts() {
+    //     return fetch(workoutURL)
+    //     .then(resp => resp.json())
+    //     .then(workouts => {
+    //         for(let workout of workouts) {
+    //             let newWorkout = new Workout(workout.data.attributes);
+    //             newWorkout.showWorkout();
+    //         }
+    //     })
+    //     .catch(err=> alert(err))
+    // }
 
 
 
