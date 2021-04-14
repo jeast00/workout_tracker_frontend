@@ -19,29 +19,29 @@ const exerciseURL = `http://localhost:3000/exercises`;
 // console.log(addWorkoutButton); // checked ********
 
 // add an event listener to the workoutForm variable to hide the workoutForm, add elements to the DOM that show the workout Form input value, and then reveal the exercise form
-// workoutForm.addEventListener('submit', saveWorkout)
+workoutForm.addEventListener('submit', Workout.saveWorkout)
 
 // add a function to add the Workout Name to the DOM, hide the workout form, and reveal the exercise form
-function saveWorkout(e) {
-    e.preventDefault(); // if event listener is a 'submit' have a preventDefault function on the event
+// function saveWorkout(e) {
+//     e.preventDefault(); // if event listener is a 'submit' have a preventDefault function on the event
 
-    // create a configuration object to pass through the fetch 'POST' request
-    const workoutObject = {
-        method: 'POST',
-        headers: {
-            'Content-type': 'application/json',
-            'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-            name: workoutNameInput.value
-        })
-    }
+//     // create a configuration object to pass through the fetch 'POST' request
+//     const workoutObject = {
+//         method: 'POST',
+//         headers: {
+//             'Content-type': 'application/json',
+//             'Accept': 'application/json'
+//         },
+//         body: JSON.stringify({
+//             name: workoutNameInput.value
+//         })
+//     }
 
-    return fetch(workoutURL, workoutObject)
-        .then(resp => resp.json())
-        .then(workout => showWorkout(workout.data.attributes))
+//     return fetch(workoutURL, workoutObject)
+//         .then(resp => resp.json())
+//         .then(workout => showWorkout(workout.data.attributes))
 
-}
+// }
 
 // create a function to show the workout name on the DOM
 // function showWorkout(workout) {

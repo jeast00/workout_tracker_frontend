@@ -29,7 +29,7 @@ class Workout {
             });
             this.showWorkouts();
         })
-        .catch(err=> alert(err))
+        .catch(err => alert(err))
     }
 
 
@@ -136,6 +136,30 @@ class Workout {
 
     // add the event listener for the delete workout button here with the deleteWorkout function called
     // deleteWorkoutButton.addEventListener('click', deleteWorkout);
+    }
+
+    static saveWorkout(e) {
+        e.preventDefault(); // if event listener is a 'submit' have a preventDefault function on the event
+    
+        // create a configuration object to pass through the fetch 'POST' request
+        const workoutObject = {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                name: workoutNameInput.value
+            })
+        }
+    
+        return fetch(workoutURL, workoutObject)
+            .then(resp => resp.json())
+            .then(workout => {
+                let newWorkout = new Workout(workout.data.attributes)
+                newWorkout.showWorkout();
+            }).catch(err => alert(err))
+    
     }
 
 
