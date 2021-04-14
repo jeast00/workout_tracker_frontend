@@ -1,6 +1,6 @@
 class Workout {
 
-    // create an @@all static variable empty array
+    // create an @@all static variable empty array for workouts
     static allWorkouts = [];
 
     constructor(workout) {
@@ -20,9 +20,7 @@ class Workout {
         return fetch(workoutURL)
         .then(resp => resp.json())
         .then(workouts => {
-            for(let workout of workouts) {
-                let newWorkout = new Workout(workout.data.attributes);
-            }
+            console.log(workouts);
         })
         .catch(err=> alert(err))
     }
