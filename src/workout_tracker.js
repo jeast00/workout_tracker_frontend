@@ -11,7 +11,7 @@ class WorkoutTracker {
         .then(workouts => {
             for(let workout of workouts) {
                 let newWorkout = new Workout(workout.data.attributes);
-                console.log(newWorkout);
+                return newWorkout
             }
         })
         .catch(err=> alert(err))
