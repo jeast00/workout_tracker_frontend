@@ -1,6 +1,5 @@
 class Workout {
 
-    // create an @@all static variable empty array for workouts
     static allWorkouts = [];
 
     constructor(workout) {
@@ -13,7 +12,6 @@ class Workout {
 
 
     static showWorkouts() {
-        // console.log(this.allWorkouts);
         this.allWorkouts.forEach(workout => {
             workout.showWorkout();
         })
@@ -38,7 +36,6 @@ class Workout {
     // console.log(exerciseForm); tested and checked 
 
     // *** create input tags for exercise name ***
-    // console.log(exerciseNameLabel.innerText); tested and checked
     const exerciseNameInput = document.createElement('input');
     // console.log(exerciseNameInput); //tested and checked
     exerciseNameInput.setAttribute('type', 'text');
@@ -64,52 +61,26 @@ class Workout {
     exerciseSubmitted.setAttribute('type', 'submit');
     exerciseSubmitted.setAttribute('value', 'Save Exercise');
 
-    // console.log(exerciseSetLabel, exerciseRepetitionLabel, exerciseTimeLabel, exerciseCompletedLabel);
     exerciseForm.appendChild(exerciseNameInput);
     exerciseForm.appendChild(exerciseSetInput);
     exerciseForm.appendChild(exerciseRepetitionInput);
     exerciseForm.appendChild(exerciseTimeInput);
     exerciseForm.appendChild(exerciseSubmitted);  
-    // console.log(exerciseForm);
 
-    // add an event listener for the exercise form on submit, and call the function to save the exercise info
-    exerciseForm.addEventListener('submit', Exercise.saveExerciseInfo)
+    exerciseForm.addEventListener('submit', Exercise.createExerciseInfo)
 
-    // create a div element for exercise info and append it with with workout
+
     const exerciseInfo = document.createElement('div');
 
-    // create a serializer for workouts and pass in the data for exercises *********
-    // show the exercise info saved from the seed data / submitted data from backend - Hint - Exercise.create def create method ****
-    // workoutName.data.attributes.exercises.forEach(exercise => { // COME BACK TO THIS AFTER CREATING THE SERIALIZER
-    //     console.log(exercise);
-    // });
-
-    // console.log(this.exercises);
 
     this.exercises.forEach(exercise => {
-        const exerciseUL = document.createElement('ul');
-        exerciseUL.setAttribute('id', 'exercise_info_list');
-        exerciseUL.dataset.id = exercise.id;
-
-        const exerciseName = document.createElement('li');
-        exerciseName.innerText = `Exercise Name: ${exercise.name}`;
-
-        const exerciseSet = document.createElement('li');
-        exerciseSet.innerText = `Sets: ${exercise.sets}`;
-
-        const exerciseRep = document.createElement('li');
-        exerciseRep.innerText = `Reps: ${exercise.repetitions}`;
-
-        const exerciseTime = document.createElement('li');
-        exerciseTime.innerText = `Time: ${exercise.time} minute(s)`;
-
-        exerciseUL.append(exerciseName, exerciseSet, exerciseRep, exerciseTime);
-        exerciseInfo.appendChild(exerciseUL);
-
+        // console.log(exercise);
+        let newExerciseInfo = new Exercise(exercise);
+        console.log(newExerciseInfo);
+        newExerciseInfo.showExerciseInfo(exerciseInfo);
     });
 
-    // append workout name to the DOM
-    // workoutNameDiv.append(workoutNameP, exerciseForm);
+
     exerciseForm.append(exerciseInfo);
     workoutNameLI.appendChild(exerciseForm);
     workoutNameLI.append(deleteWorkoutButton)
@@ -117,16 +88,12 @@ class Workout {
     workoutDiv.appendChild(workoutNameUL);
 
 
-    workoutForm.reset(); // resets the form after submission
-
-    // add the event listener for the delete workout button here with the deleteWorkout function called
-    // deleteWorkoutButton.addEventListener('click', deleteWorkout);
+    workoutForm.reset();
     }
 
     static saveWorkout(e) {
-        e.preventDefault(); // if event listener is a 'submit' have a preventDefault function on the event
-    
-        // create a configuration object to pass through the fetch 'POST' request
+        e.preventDefault();
+
         const workoutObject = {
             method: 'POST',
             headers: {
@@ -147,8 +114,6 @@ class Workout {
     
     }
 
-
-    // gets rid of the Uncaught TypeError: not a function when using static
     static getWorkouts() {
         return fetch(workoutURL)
         .then(resp => resp.json())
@@ -157,10 +122,20 @@ class Workout {
                 new Workout(workout.data.attributes);
             });
             this.showWorkouts();
-        })
-        .catch(err => alert(err))
+        }).catch(err => alert(err))
     }
 
+    // // create a delete function to delete entire workout
+// function deleteWorkout(e) {
+//     // set up a fetch delete request with url and the specific workout delete button being clicked ** assign a class to the button created ** Button Created **
+//     e.preventDefault();
+//     e.target.parentElement.remove(); // remove the workout from the html
+//     const workout_ID = parseInt(e.target.parentElement.dataset.id);
+//     // console.log(workout_ID); Tested and checked - worked
+//     return fetch(`${workoutURL}/${workout_ID}`, {
+//         method: 'DELETE'
+//     }).then(resp => resp.json());
 
+// }
 
 }
