@@ -1,4 +1,7 @@
 class Exercise {
+
+    static allExercises = [];
+
     constructor(exercise) {
         this.id = exercise.id 
         this.name = exercise.name
@@ -6,5 +9,10 @@ class Exercise {
         this.repetitions = exercise.repetitions
         this.time = exercise.time
         this.workoutID = exercise.workout_id
+        Exercise.allExercises.push(this)
+        console.log(this);
     }
+
+
 }
+

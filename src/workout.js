@@ -88,7 +88,7 @@ class Workout {
     // console.log(exerciseForm);
 
     // add an event listener for the exercise form on submit, and call the function to save the exercise info
-    // exerciseForm.addEventListener('submit', showExerciseInfo)
+    exerciseForm.addEventListener('submit', showExerciseInfo)
 
     // create a div element for exercise info and append it with with workout
     const exerciseInfo = document.createElement('div');
