@@ -146,65 +146,65 @@ workoutForm.addEventListener('submit', Workout.saveWorkout)
 
 
 // add a function to save the exercise values and append them to the DOM
-function showExerciseInfo(e) {
-    e.preventDefault();
-    const nameInput = e.target.children[0].value // validate the input for the exercise name from the event target value
-    // console.log(nameInput);
-    const setInput = e.target.children[1].value // set variable to grab the input value of sets
-    const repInput = e.target.children[2].value // set variable to grab the input value of repetitions
-    const timeInput = e.target.children[3].value // set variable to grab the input value of time
-    const exerciseUL = e.target.children[5] // get the target element of the exercise unordered list tag
-    const workout_ID = e.target.parentElement.dataset.id;
-    // const editExerciseInfoButton = document.createElement('button');
-    // editExerciseInfoButton.innerText = 'edit info';
-    // exerciseUL.append(editExerciseInfoButton);
-    // console.log(workout_ID);
+// function showExerciseInfo(e) {
+//     e.preventDefault();
+//     const nameInput = e.target.children[0].value // validate the input for the exercise name from the event target value
+//     // console.log(nameInput);
+//     const setInput = e.target.children[1].value // set variable to grab the input value of sets
+//     const repInput = e.target.children[2].value // set variable to grab the input value of repetitions
+//     const timeInput = e.target.children[3].value // set variable to grab the input value of time
+//     const exerciseUL = e.target.children[5] // get the target element of the exercise unordered list tag
+//     const workout_ID = e.target.parentElement.dataset.id;
+//     // const editExerciseInfoButton = document.createElement('button');
+//     // editExerciseInfoButton.innerText = 'edit info';
+//     // exerciseUL.append(editExerciseInfoButton);
+//     // console.log(workout_ID);
 
-    createExerciseInfo(nameInput, setInput, repInput, timeInput, exerciseUL, workout_ID);
-    saveExerciseInfo(nameInput, setInput, repInput, timeInput, workout_ID);
+//     createExerciseInfo(nameInput, setInput, repInput, timeInput, exerciseUL, workout_ID);
+//     saveExerciseInfo(nameInput, setInput, repInput, timeInput, workout_ID);
     
-    // console.log(nameInput, setInput, repInput, timeInput);
-    e.target.reset(); // reset the exercise form after submission
+//     // console.log(nameInput, setInput, repInput, timeInput);
+//     e.target.reset(); // reset the exercise form after submission
 
-}
+// }
 
 // // // create a function to create the exercise elements and append them to the DOM
-function createExerciseInfo(nameInput, setInput, repInput, timeInput, exerciseDiv, workout_ID) {
-        // create a new unordered list element for each exercise info added to the exerciseInfo target
-        const exerciseUL = document.createElement('ul');
-        exerciseUL.setAttribute('id', 'exercise_info_list');
-        // exerciseUL.dataset.id = Exercise.id;
+// function createExerciseInfo(nameInput, setInput, repInput, timeInput, exerciseDiv, workout_ID) {
+//         // create a new unordered list element for each exercise info added to the exerciseInfo target
+//         const exerciseUL = document.createElement('ul');
+//         exerciseUL.setAttribute('id', 'exercise_info_list');
+//         // exerciseUL.dataset.id = Exercise.id;
 
-        // create a list element for the exercise name
-        const exerciseNameLI = document.createElement('li');
-        exerciseNameLI.innerText = `Exercise Name: ${nameInput}`;
-        exerciseNameLI.dataset.id = workout_ID;
+//         // create a list element for the exercise name
+//         const exerciseNameLI = document.createElement('li');
+//         exerciseNameLI.innerText = `Exercise Name: ${nameInput}`;
+//         exerciseNameLI.dataset.id = workout_ID;
     
-        // create a list element for the exercise set
-        const exerciseSetLI = document.createElement('li');
-        exerciseSetLI.innerText = `Sets: ${setInput}`;
-        exerciseSetLI.dataset.id = workout_ID;
+//         // create a list element for the exercise set
+//         const exerciseSetLI = document.createElement('li');
+//         exerciseSetLI.innerText = `Sets: ${setInput}`;
+//         exerciseSetLI.dataset.id = workout_ID;
 
-        // create a list element for the exercise repetition
-        const exerciseRepLI = document.createElement('li')
-        exerciseRepLI.innerText = `Reps: ${repInput}`;
-        exerciseRepLI.dataset.id = workout_ID;
+//         // create a list element for the exercise repetition
+//         const exerciseRepLI = document.createElement('li')
+//         exerciseRepLI.innerText = `Reps: ${repInput}`;
+//         exerciseRepLI.dataset.id = workout_ID;
 
-        // create a list element for the exercise time
-        const exerciseTimeLI = document.createElement('li');
-        exerciseTimeLI.innerText = `Time: ${timeInput} minute(s)`;
-        exerciseTimeLI.dataset.id = workout_ID;
+//         // create a list element for the exercise time
+//         const exerciseTimeLI = document.createElement('li');
+//         exerciseTimeLI.innerText = `Time: ${timeInput} minute(s)`;
+//         exerciseTimeLI.dataset.id = workout_ID;
 
-        // create a edit button element to update the exercise info
-        // const editExerciseInfoButton = document.createElement('button');
-        // editExerciseInfoButton.value = 'edit info';
-        // console.log(editExerciseInfoButton);
+//         // create a edit button element to update the exercise info
+//         // const editExerciseInfoButton = document.createElement('button');
+//         // editExerciseInfoButton.value = 'edit info';
+//         // console.log(editExerciseInfoButton);
     
-        // append the list elements to the UL tag from the event target 
-        exerciseUL.append(exerciseNameLI, exerciseSetLI, exerciseRepLI, exerciseTimeLI);
-        console.log(exerciseUL);
-        exerciseDiv.appendChild(exerciseUL)
-}
+//         // append the list elements to the UL tag from the event target 
+//         exerciseUL.append(exerciseNameLI, exerciseSetLI, exerciseRepLI, exerciseTimeLI);
+//         console.log(exerciseUL);
+//         exerciseDiv.appendChild(exerciseUL)
+// }
 
 // // create a function to fetch post request the exercise info being submitted to the backend database ****
 // function saveExerciseInfo(exerciseName, exerciseSet, exerciseRep, exerciseTime, workout_ID) {
