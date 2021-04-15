@@ -18,21 +18,6 @@ class Workout {
             workout.showWorkout();
         })
     }
-   
-    // gets rid of the Uncaught TypeError: not a function when using static
-    static getWorkouts() {
-        return fetch(workoutURL)
-        .then(resp => resp.json())
-        .then(workouts => {
-            workouts.forEach(workout => {
-                new Workout(workout.data.attributes);
-            });
-            this.showWorkouts();
-        })
-        .catch(err => alert(err))
-    }
-
-
 
 
     showWorkout() {
@@ -160,6 +145,20 @@ class Workout {
                 newWorkout.showWorkout();
             }).catch(err => alert(err))
     
+    }
+
+
+    // gets rid of the Uncaught TypeError: not a function when using static
+    static getWorkouts() {
+        return fetch(workoutURL)
+        .then(resp => resp.json())
+        .then(workouts => {
+            workouts.forEach(workout => {
+                new Workout(workout.data.attributes);
+            });
+            this.showWorkouts();
+        })
+        .catch(err => alert(err))
     }
 
 

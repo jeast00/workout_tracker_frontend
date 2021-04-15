@@ -1,10 +1,5 @@
 // console.log("Test js page");
 
-// const workoutTracker = new WorkoutTracker();
-// console.log(workoutTracker);
-// workoutTracker.getWorkouts();
-// workoutTracker.showWorkout();
-
 
 // add variables to the top - hoisting
 // const addWorkoutButton = document.getElementById('add_workout_button'); //Not being used
@@ -212,32 +207,24 @@ function createExerciseInfo(nameInput, setInput, repInput, timeInput, exerciseDi
 }
 
 // // create a function to fetch post request the exercise info being submitted to the backend database ****
-function saveExerciseInfo(exerciseName, exerciseSet, exerciseRep, exerciseTime, workout_ID) {
-    const exerciseInfoObject = {
-        method: 'POST',
-        headers: {
-            'Content-type': 'application/json',
-            'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-            name: exerciseName,
-            sets: exerciseSet,
-            repetitions: exerciseRep,
-            time: exerciseTime,
-            workout_id: workout_ID
-        })
-    }
-    return fetch(exerciseURL, exerciseInfoObject)
-}
+// function saveExerciseInfo(exerciseName, exerciseSet, exerciseRep, exerciseTime, workout_ID) {
+//     const exerciseInfoObject = {
+//         method: 'POST',
+//         headers: {
+//             'Content-type': 'application/json',
+//             'Accept': 'application/json'
+//         },
+//         body: JSON.stringify({
+//             name: exerciseName,
+//             sets: exerciseSet,
+//             repetitions: exerciseRep,
+//             time: exerciseTime,
+//             workout_id: workout_ID
+//         })
+//     }
+//     return fetch(exerciseURL, exerciseInfoObject)
+// }
 
-
-// create a function to fetch the workouts
-function fetchWorkouts() {
-    return fetch(workoutURL)
-    .then(resp => resp.json())
-    .then(workouts => workouts.forEach(workout => showWorkout(workout.data.attributes))) // passing in the parameter of the workout serializer for data and attributes
-    .catch(err=> alert(err)) // alert errors under a catch
-}
 
 // // create a function to edit / update exercise info *** fetch patch request ***
 // // function fetchUpdateExerciseInfo() {
