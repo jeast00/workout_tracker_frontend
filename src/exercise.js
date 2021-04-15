@@ -3,32 +3,26 @@ class Exercise {
     static allExercises = [];
 
     constructor(exercise) {
-        this.id = exercise.id 
-        this.name = exercise.name
-        this.sets = exercise.sets
-        this.repetitions = exercise.repetitions
-        this.time = exercise.time
-        this.workoutID = exercise.workout_id
+        this.id = exercise.id; 
+        this.name = exercise.name;
+        this.sets = exercise.sets;
+        this.repetitions = exercise.repetitions;
+        this.time = exercise.time;
+        this.workoutID = exercise.workout_id;
     }
 
-    static createExerciseInfo(e) {
+    static showExerciseInfo(e) {
         e.preventDefault();
-        const nameInput = e.target.children[0].value // validate the input for the exercise name from the event target value
-        // console.log(nameInput);
-        const setInput = e.target.children[1].value // set variable to grab the input value of sets
-        const repInput = e.target.children[2].value // set variable to grab the input value of repetitions
-        const timeInput = e.target.children[3].value // set variable to grab the input value of time
-        const exerciseUL = e.target.children[5] // get the target element of the exercise unordered list tag
+        const nameInput = e.target.children[0].value; 
+        const setInput = e.target.children[1].value; 
+        const repInput = e.target.children[2].value; 
+        const timeInput = e.target.children[3].value;
+        const exerciseUL = e.target.children[5];
         const workout_ID = e.target.parentElement.dataset.id;
-        // const editExerciseInfoButton = document.createElement('button');
-        // editExerciseInfoButton.innerText = 'edit info';
-        // exerciseUL.append(editExerciseInfoButton);
-        // console.log(workout_ID);
 
         Exercise.saveExerciseInfo(nameInput, setInput, repInput, timeInput, exerciseUL, workout_ID);
         
-        // console.log(nameInput, setInput, repInput, timeInput);
-        e.target.reset(); // reset the exercise form after submission
+        e.target.reset(); 
     
     }
 
@@ -52,16 +46,15 @@ class Exercise {
                .then(exercise => {
                    let newExercise = new Exercise(exercise)
                    console.log(newExercise);
-                   newExercise.showExerciseInfo(exerciseDiv);
+                   newExercise.createExerciseInfo(exerciseDiv);
                })
     }
 
 
-    showExerciseInfo(exerciseDiv) {
-        // create a new unordered list element for each exercise info added to the exerciseInfo target
+    createExerciseInfo(exerciseDiv) {
         const exerciseUL = document.createElement('ul');
         exerciseUL.setAttribute('id', 'exercise_info_list');
-        // exerciseUL.dataset.id = Exercise.id;
+        exerciseUL.dataset.id = this.id;
 
         // create a list element for the exercise name
         const exerciseNameLI = document.createElement('li');

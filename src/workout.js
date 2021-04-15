@@ -67,17 +67,15 @@ class Workout {
     exerciseForm.appendChild(exerciseTimeInput);
     exerciseForm.appendChild(exerciseSubmitted);  
 
-    exerciseForm.addEventListener('submit', Exercise.createExerciseInfo)
+    exerciseForm.addEventListener('submit', Exercise.showExerciseInfo)
 
 
     const exerciseInfo = document.createElement('div');
 
 
     this.exercises.forEach(exercise => {
-        // console.log(exercise);
         let newExerciseInfo = new Exercise(exercise);
-        console.log(newExerciseInfo);
-        newExerciseInfo.showExerciseInfo(exerciseInfo);
+        newExerciseInfo.createExerciseInfo(exerciseInfo);
     });
 
 
@@ -89,6 +87,8 @@ class Workout {
 
 
     workoutForm.reset();
+
+    deleteWorkoutButton.addEventListener('click', Workout.deleteWorkout);
     }
 
     static saveWorkout(e) {
@@ -126,7 +126,7 @@ class Workout {
     }
 
     // create a delete function to delete entire workout
-    deleteWorkout(e) {
+    static deleteWorkout(e) {
         // set up a fetch delete request with url and the specific workout delete button being clicked ** assign a class to the button created ** Button Created **
         e.preventDefault();
         e.target.parentElement.remove(); // remove the workout from the html
