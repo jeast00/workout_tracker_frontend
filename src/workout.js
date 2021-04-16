@@ -39,7 +39,7 @@ class Workout {
     const exerciseNameInput = document.createElement('input');
     // console.log(exerciseNameInput); //tested and checked
     exerciseNameInput.setAttribute('type', 'text');
-    exerciseNameInput.setAttribute('placeholder', 'name')
+    exerciseNameInput.setAttribute('placeholder', 'exercise name')
 
     // *** create input tags for exercise sets ***
     const exerciseSetInput = document.createElement('input');
@@ -71,6 +71,7 @@ class Workout {
 
 
     const exerciseInfo = document.createElement('div');
+    exerciseInfo.setAttribute('id', 'exercise_info_div');
 
 
     this.exercises.forEach(exercise => {
@@ -81,7 +82,7 @@ class Workout {
 
     exerciseForm.append(exerciseInfo);
     workoutNameLI.appendChild(exerciseForm);
-    workoutNameLI.append(deleteWorkoutButton)
+    workoutNameLI.appendChild(deleteWorkoutButton);
     workoutNameUL.appendChild(workoutNameLI);
     workoutDiv.appendChild(workoutNameUL);
 
