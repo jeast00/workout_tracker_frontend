@@ -10,7 +10,6 @@ class Workout {
     }
 
 
-
     static showWorkouts() {
         this.allWorkouts.forEach(workout => {
             workout.showWorkout();

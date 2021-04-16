@@ -10,7 +10,7 @@ const exerciseURL = `http://localhost:3000/exercises`;
 
 
 // add an event listener to the workoutForm variable to hide the workoutForm, add elements to the DOM that show the workout Form input value, and then reveal the exercise form
-workoutForm.addEventListener('submit', Workout.saveWorkout)
+workoutForm.addEventListener('submit', Workout.saveWorkout);
 
 
 Workout.getWorkouts();
