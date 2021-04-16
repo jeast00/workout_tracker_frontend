@@ -55,6 +55,19 @@ input[type = 'submit'] {
     cursor: grab; 
 }
 
+.workout_name_li_button {
+    border: 0;
+    background: none;
+    display: block;
+    margin: auto;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 10px 10px;
+    outline: none;
+    color: black;
+    border-radius: 25px;
+}
+
 
 
 
