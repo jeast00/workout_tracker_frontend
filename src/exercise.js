@@ -1,7 +1,5 @@
 class Exercise {
 
-    static allExercises = [];
-
     constructor(exercise) {
         this.id = exercise.id; 
         this.name = exercise.name;
@@ -45,7 +43,6 @@ class Exercise {
                .then(resp => resp.json())
                .then(exercise => {
                    let newExercise = new Exercise(exercise)
-                   console.log(newExercise);
                    newExercise.createExerciseInfo(exerciseDiv);
                })
     }
