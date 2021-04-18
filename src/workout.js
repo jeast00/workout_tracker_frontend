@@ -139,3 +139,5 @@ class Workout {
     
 
 }
+
+Workout.getWorkouts();
