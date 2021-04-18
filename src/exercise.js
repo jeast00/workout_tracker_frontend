@@ -9,7 +9,7 @@ class Exercise {
         this.workoutID = exercise.workout_id;
     }
 
-    static showExerciseInfo(e) {
+    static getExerciseInfoInputs(e) {
         e.preventDefault();
         const nameInput = e.target.children[0].value; 
         const setInput = e.target.children[1].value; 
@@ -53,27 +53,22 @@ class Exercise {
         exerciseUL.setAttribute('id', 'exercise_info_list');
         exerciseUL.dataset.id = this.id;
 
-        // create a list element for the exercise name
         const exerciseNameLI = document.createElement('li');
         exerciseNameLI.innerText = `Exercise Name: ${this.name}`;
         exerciseNameLI.dataset.id = this.workoutID;
     
-        // create a list element for the exercise set
         const exerciseSetLI = document.createElement('li');
         exerciseSetLI.innerText = `Sets: ${this.sets}`;
         exerciseSetLI.dataset.id = this.workoutID;
 
-        // create a list element for the exercise repetition
         const exerciseRepLI = document.createElement('li')
         exerciseRepLI.innerText = `Reps: ${this.repetitions}`;
         exerciseRepLI.dataset.id = this.workoutID;
 
-        // create a list element for the exercise time
         const exerciseTimeLI = document.createElement('li');
         exerciseTimeLI.innerText = `Time: ${this.time} minute(s)`;
         exerciseTimeLI.dataset.id = this.workoutID;
     
-        // append the list elements to the UL tag from the event target 
         exerciseUL.append(exerciseNameLI, exerciseSetLI, exerciseRepLI, exerciseTimeLI);
         exerciseDiv.appendChild(exerciseUL)
     }

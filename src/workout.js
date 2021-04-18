@@ -3,11 +3,13 @@ class Workout {
     static allWorkouts = [];
     static workoutURL = `http://localhost:3000/workouts`;
 
+    static workoutForm = document.getElementById('workout_form');
+
     constructor(workout) {
-        this.id = workout.id
-        this.name = workout.name
-        this.exercises = workout.exercises
-        Workout.allWorkouts.push(this)
+        this.id = workout.id;
+        this.name = workout.name;
+        this.exercises = workout.exercises;
+        Workout.allWorkouts.push(this);
     }
 
 
@@ -63,7 +65,7 @@ class Workout {
     exerciseForm.appendChild(exerciseTimeInput);
     exerciseForm.appendChild(exerciseSubmitted);  
 
-    exerciseForm.addEventListener('submit', Exercise.showExerciseInfo)
+    exerciseForm.addEventListener('submit', Exercise.getExerciseInfoInputs)
 
 
     const exerciseInfo = document.createElement('div');
@@ -83,7 +85,7 @@ class Workout {
     workoutDiv.appendChild(workoutNameUL);
 
 
-    workoutForm.reset();
+    Workout.workoutForm.reset();
 
     deleteWorkoutButton.addEventListener('click', Workout.deleteWorkout);
     }
