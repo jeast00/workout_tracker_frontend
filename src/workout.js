@@ -4,6 +4,8 @@ class Workout {
     static workoutURL = `http://localhost:3000/workouts`;
 
     static workoutForm = document.getElementById('workout_form');
+    static workoutNameInput = document.getElementById('workout_name_input');
+    static workoutDiv = document.getElementById('workout_div');
 
     constructor(workout) {
         this.id = workout.id;
@@ -82,7 +84,7 @@ class Workout {
     workoutNameLI.appendChild(exerciseForm);
     workoutNameLI.appendChild(deleteWorkoutButton);
     workoutNameUL.appendChild(workoutNameLI);
-    workoutDiv.appendChild(workoutNameUL);
+    Workout.workoutDiv.appendChild(workoutNameUL);
 
 
     Workout.workoutForm.reset();
@@ -100,7 +102,7 @@ class Workout {
                 'Accept': 'application/json'
             },
             body: JSON.stringify({
-                name: workoutNameInput.value
+                name: Workout.workoutNameInput.value
             })
         }
     

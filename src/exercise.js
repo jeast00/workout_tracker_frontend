@@ -1,5 +1,7 @@
 class Exercise {
 
+    static exerciseURL = `http://localhost:3000/exercises`;
+
     constructor(exercise) {
         this.id = exercise.id; 
         this.name = exercise.name;
@@ -39,7 +41,7 @@ class Exercise {
                 workout_id: workout_ID
             })
         }
-        return fetch(exerciseURL, exerciseInfoObject)
+        return fetch(Exercise.exerciseURL, exerciseInfoObject)
                .then(resp => resp.json())
                .then(exercise => {
                    let newExercise = new Exercise(exercise)
