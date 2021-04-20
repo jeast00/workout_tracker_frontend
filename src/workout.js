@@ -116,7 +116,7 @@ class Workout {
     }
 
     static getWorkouts() {
-        return fetch(Workout.workoutURL)
+        fetch(Workout.workoutURL)
         .then(resp => resp.json())
         .then(workouts => {
             workouts.forEach(workout => {

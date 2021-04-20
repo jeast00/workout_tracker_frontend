@@ -1,5 +1,6 @@
 const workoutTracker = new WorkoutTracker();
-workoutTracker.getEventListeners();
+// console.log(workoutTracker);
+workoutTracker.getWorkoutFormEventListener();
 
 
 

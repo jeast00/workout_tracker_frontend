@@ -70,9 +70,27 @@ class Exercise {
         const exerciseTimeLI = document.createElement('li');
         exerciseTimeLI.innerText = `Time: ${this.time} minute(s)`;
         exerciseTimeLI.dataset.id = this.workoutID;
+
+        const deleteExerciseButton = document.createElement('button');
+        deleteExerciseButton.className = 'delete_exercise_button';
+        deleteExerciseButton.innerText = 'Delete Execise?';
+
     
-        exerciseUL.append(exerciseNameLI, exerciseSetLI, exerciseRepLI, exerciseTimeLI);
+        exerciseUL.append(exerciseNameLI, exerciseSetLI, exerciseRepLI, exerciseTimeLI, deleteExerciseButton);
         exerciseDiv.appendChild(exerciseUL)
+
+        deleteExerciseButton.addEventListener('click', this.deleteExercise)
+    }
+
+     deleteExercise = (e) => {
+        e.preventDefault();
+        e.target.parentElement.parentElement.remove();
+        const exercise_ID = this.id;
+
+        return fetch(`${Exercise.exerciseURL}/${exercise_ID}`, {
+            method: 'DELETE'
+        }).then(resp => resp.json());
+
     }
 
 

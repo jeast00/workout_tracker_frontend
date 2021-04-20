@@ -1,7 +1,9 @@
 class WorkoutTracker {
-    
 
-    getEventListeners() {
+    getWorkoutFormEventListener() {
         Workout.workoutForm.addEventListener('submit', Workout.saveWorkout);
     }
+
+    
+
 }
